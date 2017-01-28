@@ -7,8 +7,8 @@ Metrics/LineLength:
 Style/Documentation:
   Exclude:
     - 'spec/**/*'
-    - 'app/controllers/application_controller.rb'
-    - 'app/helpers/application_helper.rb'
+    - 'app/controllers/*.rb'
+    - 'app/helpers/*.rb'
     - 'app/mailers/application_mailer.rb'
     - 'app/models/application_record.rb'
     - 'config/application.rb'
