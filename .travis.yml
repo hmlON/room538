@@ -1,0 +1,14 @@
+language: ruby
+
+sudo: false
+
+cache: bundler
+
+addons:
+  postgresql: 9.3
+
+script:
+  - bundle exec rspec
+
+notifications:
+  email: false
