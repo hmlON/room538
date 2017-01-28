@@ -1,0 +1,8 @@
+PreCommit:
+  RuboCop:
+    enabled: true
+    on_warn: fail
+
+  Reek:
+    enabled: true
+    command: ['bundle', 'exec', 'reek']
