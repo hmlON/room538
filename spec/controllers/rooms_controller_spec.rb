@@ -44,7 +44,7 @@ RSpec.describe RoomsController, type: :controller do
       it 'updates current_users room' do
         subject.current_user.room = create(:room)
 
-        put :update, params: { room: { name: 'Room538' } }
+        patch :update, params: { room: { name: 'Room538' } }
 
         expect(subject.current_user.room.name).to eq 'Room538'
       end
