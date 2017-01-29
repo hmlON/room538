@@ -18,5 +18,13 @@ RSpec.describe RoomsController, type: :controller do
         expect(assigns(:rooms).length).to eq 5
       end
     end
+
+    describe 'Post #create' do
+      it 'creates new room and assings it as current_users room' do
+        post :create, params: { room: { name: 'Room538' } }
+
+        expect(subject.current_user.room.name).to eq 'Room538'
+      end
+    end
   end
 end

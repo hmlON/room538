@@ -10,7 +10,7 @@ RSpec.feature 'Rooms' do
     click_link 'Create new room'
 
     fill_in 'Name', with: 'My room'
-    click_on 'Create room'
+    click_button 'Create room'
 
     expect(page).to have_content 'You successfully created new room "My room"'
   end

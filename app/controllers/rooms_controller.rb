@@ -10,10 +10,10 @@ class RoomsController < ApplicationController
   end
 
   def create
-    room = Room.new(room_params)
-    if room.save
-      room.users << current_user
-      redirect_to root_path, notice: "You successfully created new room \"#{room.name}\""
+    @room = current_user.build_room(room_params)
+    if @room.save
+      @room.users << current_user
+      redirect_to rooms_path, notice: "You successfully created new room \"#{@room.name}\""
     else
       render :new
     end
