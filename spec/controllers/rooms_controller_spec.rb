@@ -19,9 +19,32 @@ RSpec.describe RoomsController, type: :controller do
       end
     end
 
-    describe 'Post #create' do
+    describe 'GET #edit' do
+      it 'returns http success' do
+        room = create(:room)
+        room.users << subject.current_user
+
+        get :edit
+
+        expect(response).to have_http_status(:success)
+        expect(response).to render_template(:edit)
+        expect(assigns(:room)).to eq subject.current_user.room
+      end
+    end
+
+    describe 'POST #create' do
       it 'creates new room and assings it as current_users room' do
         post :create, params: { room: { name: 'Room538' } }
+
+        expect(subject.current_user.room.name).to eq 'Room538'
+      end
+    end
+
+    describe 'PUT #update' do
+      it 'updates current_users room' do
+        subject.current_user.room = create(:room)
+
+        put :update, params: { room: { name: 'Room538' } }
 
         expect(subject.current_user.room.name).to eq 'Room538'
       end

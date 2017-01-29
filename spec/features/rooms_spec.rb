@@ -12,7 +12,7 @@ RSpec.feature 'Rooms' do
     fill_in 'Name', with: 'My room'
     click_button 'Create room'
 
-    expect(page).to have_content 'You successfully created new room "My room"'
+    expect(page).to have_content 'You have successfully created new room "My room".'
   end
 
   scenario 'User looks at all rooms' do

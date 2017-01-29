@@ -1,2 +1,5 @@
-h1 Rooms#edit
-p Find me in app/views/rooms/edit.html.slim
+h1 Edit your room
+
+= render partial: 'form', locals: { room: @room, submit_button_text: 'Update room' }
+
+= link_to 'Destroy your room', rooms_path, method: :delete

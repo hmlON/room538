@@ -1,7 +1,7 @@
-= form_for(room) do |f|
+= form_for(room, url: rooms_path) do |f|
   .field
     = f.label :name
     br
     = f.text_field :name
   .actions
-    = f.submit 'Create room'
+    = f.submit submit_button_text
