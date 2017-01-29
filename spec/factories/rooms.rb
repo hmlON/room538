@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :room do
-    name { Faker::Hipster.sentence(2) }
+    name { Faker::Hipster.word }
   end
 end
