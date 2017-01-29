@@ -1,5 +1,7 @@
 # User is a preson, who lives in a hostel room
 class User < ApplicationRecord
+  belongs_to :room, optional: true
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :name, presence: true
