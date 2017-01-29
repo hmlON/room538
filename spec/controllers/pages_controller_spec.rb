@@ -1,4 +1,6 @@
 RSpec.describe PagesController, type: :controller do
+  include Devise::Test::ControllerHelpers
+
   describe 'GET #index' do
     it 'returns http success' do
       get :index

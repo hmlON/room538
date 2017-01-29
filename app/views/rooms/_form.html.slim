@@ -1,0 +1,7 @@
+= form_for(room) do |f|
+  .field
+    = f.label :name
+    br
+    = f.text_field :name
+  .actions
+    = f.submit 'Create room'
