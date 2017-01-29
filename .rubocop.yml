@@ -24,3 +24,4 @@ Metrics/MethodLength:
 Metrics/BlockLength:
   Exclude:
     - 'Guardfile'
+    - 'db/schema.rb'
