@@ -4,5 +4,11 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  validates :password, presence: true
   validates :name, presence: true
+
+  def room?
+    room_id != nil
+  end
 end
