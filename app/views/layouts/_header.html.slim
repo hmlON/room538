@@ -1,10 +1,12 @@
 header
-  nav
-    ul
-      - unless user_signed_in?
-        li = link_to 'Sign up', new_user_registration_path
-        li = link_to 'Sign in', new_user_session_path
-      - else
-        - if current_user.room?
-          li = link_to 'Edit your room', edit_room_path
-        li = link_to 'Sign out', destroy_user_session_path, method: :delete
+  nav.navbar.navbar-toggleable-sm.navbar-light.bg-faded
+    .container
+      = link_to 'Room538', root_path, class: 'navbar-brand'
+      ul.navbar-nav
+        - unless user_signed_in?
+          li.nav-item = link_to 'Sign up', new_user_registration_path, class: 'nav-link'
+          li.nav-item = link_to 'Sign in', new_user_session_path
+        - else
+          - if current_user.room?
+            li.nav-item = link_to 'Edit your room', edit_room_path
+          li.nav-item = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link'
