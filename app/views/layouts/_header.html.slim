@@ -8,5 +8,5 @@ header
           li.nav-item = link_to 'Sign in', new_user_session_path
         - else
           - if current_user.room?
-            li.nav-item = link_to 'Edit your room', edit_room_path
+            li.nav-item = link_to 'Edit your room', edit_room_path, class: 'nav-link'
           li.nav-item = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link'
