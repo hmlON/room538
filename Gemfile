@@ -16,6 +16,7 @@ gem 'puma', '~> 3.0'
 gem 'rails', '~> 5.0.1'
 gem 'rainbow', '>= 2.1.0', '< 2.2.0' # workaround for bundler errors
 gem 'sass-rails', '~> 5.0'
+gem 'simple_form'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'

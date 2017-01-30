@@ -26,3 +26,4 @@ Metrics/BlockLength:
     - 'Guardfile'
     - 'db/schema.rb'
     - 'spec/**/*'
+    - 'config/initializers/simple_form_bootstrap.rb'
