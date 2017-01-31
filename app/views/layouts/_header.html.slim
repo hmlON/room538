@@ -1,12 +1,10 @@
 header
-  nav.navbar.navbar-toggleable-sm.navbar-light.bg-faded
-    .container
-      = link_to 'Room538', root_path, class: 'navbar-brand'
-      ul.navbar-nav
-        - unless user_signed_in?
-          li.nav-item = link_to 'Sign up', new_user_registration_path, class: 'nav-link'
-          li.nav-item = link_to 'Sign in', new_user_session_path, class: 'nav-link'
-        - else
+  - if user_signed_in?
+    .settings
+      .dropdown
+        a id="settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+          = fa_icon 'gear 3x'
+        .dropdown-menu.dropdown-menu-right aria-labelledby="settings"
           - if current_user.room?
-            li.nav-item = link_to 'Edit your room', edit_room_path, class: 'nav-link'
-          li.nav-item = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link'
+            = link_to 'Edit your room', edit_room_path, class: 'dropdown-item'
+          = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
