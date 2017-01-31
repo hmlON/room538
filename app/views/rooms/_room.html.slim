@@ -1,4 +1,8 @@
-.room
-  h3 = room.name
-  - room.users.each do |user|
-    p = user.name
+div class="room card" id="room-#{room.id}"
+  .card-header = "Room: \"#{room.name}\""
+  .card-block
+    h4.card-title Users:
+    ul.room-users.list-inline
+      - room.users.each do |user|
+        li.list-inline-item = fa_icon 'user', text: user.name
+    a.btn.btn-primary href="#" Send a request
