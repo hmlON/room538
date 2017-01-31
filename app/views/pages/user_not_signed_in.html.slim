@@ -1,4 +1,8 @@
-h1 Welcome to room538
-
-= link_to 'Sign up', new_user_registration_path 
-= link_to 'Sign in', new_user_session_path
+.page-wrapper
+  h1.text-center Welcome to Room538
+  p.text-center
+    | Room538 is a hostel room control application. It is designed for 
+      controlling who is next on things like "taking out trash" or "cleaning up"
+      between you and your roommates
+  p = link_to 'Sign up to get started', new_user_registration_path, class: "btn btn-lg btn-primary"
+  p = link_to 'Sign in', new_user_session_path, class: "btn btn-lg btn-secondary"
