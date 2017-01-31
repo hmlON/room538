@@ -31,7 +31,7 @@ UncommunicativeModuleName:
   IrresponsibleModule:
     enabled: false
   UtilityFunction:
-    enabled: fals
+    enabled: false
 
 "db/migrate":
   IrresponsibleModule:
