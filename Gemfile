@@ -9,6 +9,7 @@ end
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
+gem 'font-awesome-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'pg', '~> 0.18'
@@ -20,6 +21,7 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'factory_girl_rails'
