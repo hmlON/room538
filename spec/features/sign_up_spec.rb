@@ -3,7 +3,7 @@ RSpec.feature 'Sign up' do
     visit root_path
     click_link 'Sign up'
 
-    fill_in 'Name', with: 'My Name'
+    fill_in 'Full name', with: 'My Name'
     fill_in 'Email', with: 'my@name.com'
     fill_in 'Password', with: 'mypassword'
     click_button 'Sign up'
