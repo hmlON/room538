@@ -1,11 +1,10 @@
 h2 Sign up
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), defaults: { required: true, label: false }) do |f|
   = devise_error_messages!
-  = f.input :name, autofocus: true
-  = f.input :email
-  - if @minimum_password_length
-  = f.input :password, autocomplete: 'off', hint: "(#{@minimum_password_length} characters minimum)"
-  .actions
-    = f.button :submit, "Sign up"
+  = f.input :name, placeholder: 'Full name', autofocus: true
+  = f.input :email, placeholder: 'Email'
+  = f.input :password, placeholder: 'Password', autocomplete: 'off', hint: "(#{@minimum_password_length} characters minimum)"
+  .actions.text-center
+    = f.button :submit, "Sign up", class: 'btn btn-primary'
 
 = render "devise/shared/links"
