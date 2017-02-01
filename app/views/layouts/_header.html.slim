@@ -7,4 +7,5 @@ header
         .dropdown-menu.dropdown-menu-right aria-labelledby="settings"
           - if current_user.room?
             = link_to 'Edit your room', edit_room_path, class: 'dropdown-item'
+          = link_to 'Edit your profile', edit_user_registration_path, class: 'dropdown-item'
           = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
