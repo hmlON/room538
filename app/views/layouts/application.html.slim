@@ -9,6 +9,7 @@ html
   body
     .container
       .page-wrapper
-        = render 'layouts/header'
+        - if user_signed_in?        
+          = render 'layouts/header'
         = yield
     = render 'layouts/notifications'
