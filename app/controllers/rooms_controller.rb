@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
+  before_action :require_room_presence, only: [:edit, :update, :destroy]
   before_action :set_room, only: [:edit, :update, :destroy]
 
   def index
@@ -7,6 +8,7 @@ class RoomsController < ApplicationController
   end
 
   def new
+    redirect_to rooms_path, alert: 'You already have a room!' if current_user.room?
     @room = Room.new
   end
 

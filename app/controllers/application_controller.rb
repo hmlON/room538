@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
+
+  def require_room_presence
+    redirect_to new_room_path, alert: 'You need to have room!' unless current_user.room?
+  end
 end
