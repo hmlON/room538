@@ -1,3 +1,4 @@
 = simple_form_for(room, url: rooms_path) do |f|
-  = f.input :name
-  = f.button :submit, submit_button_text
+  = f.input :name, placeholder: 'Name', label: false
+  .actions.text-center
+    = f.button :submit, submit_button_text, class: 'btn btn-primary'
