@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :action do
-    name 'MyString'
+    name { Faker::Hacker.ingverb }
   end
 end
