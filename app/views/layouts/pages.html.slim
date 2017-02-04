@@ -8,7 +8,8 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     .container
-      - if user_signed_in?        
-        = render 'layouts/header'
-      = yield
+      .page-wrapper
+        - if user_signed_in?        
+          = render 'layouts/header'
+        = yield
     = render 'layouts/notifications'
