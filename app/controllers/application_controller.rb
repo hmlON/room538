@@ -11,6 +11,6 @@ class ApplicationController < ActionController::Base
   end
 
   def require_room_presence
-    redirect_to new_room_path, alert: 'You need to have room!' unless current_user.room?
+    redirect_to root_path, alert: 'You need to have room!' unless current_user.room?
   end
 end
