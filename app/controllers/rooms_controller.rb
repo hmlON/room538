@@ -34,9 +34,8 @@ class RoomsController < ApplicationController
   end
 
   def destroy
-    @room.users.each do |user|
-      user.update(room_id: nil)
-    end
+    @room.users = []
+    @room.actions = []
     @room.destroy
     redirect_to root_path
   end
