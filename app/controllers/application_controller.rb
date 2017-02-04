@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
   def require_room_presence
     redirect_to root_path, alert: 'You need to have room!' unless current_user.room?
   end
+
+  def require_room_absence
+    redirect_to dashboard_path, alert: 'You already have a room!' if current_user.room?
+  end
 end
