@@ -1,2 +1,11 @@
-h1 Dashboard#index
-p Find me in app/views/dashboard/index.html.slim
+h1 = "Room \"#{@room.name}\" dashboard"
+
+h2 Users:
+ul.users
+  - @users.each do |user|
+    li = user.name
+
+h2 Actions:    
+ul.actions
+  - @actions.each do |action|
+    li = action.name
