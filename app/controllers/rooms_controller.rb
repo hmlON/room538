@@ -8,7 +8,7 @@ class RoomsController < ApplicationController
   end
 
   def new
-    redirect_to rooms_path, alert: 'You already have a room!' if current_user.room?
+    redirect_to dashboard_path, alert: 'You already have a room!' if current_user.room?
     @room = Room.new
   end
 
@@ -16,7 +16,7 @@ class RoomsController < ApplicationController
     @room = current_user.build_room(room_params)
     if @room.save
       @room.users << current_user
-      redirect_to rooms_path, notice: "You have successfully created new room \"#{@room.name}\"."
+      redirect_to dashboard_path, notice: "You have successfully created new room \"#{@room.name}\"."
     else
       render :new
     end
@@ -26,7 +26,7 @@ class RoomsController < ApplicationController
 
   def update
     if @room.update(room_params)
-      redirect_to rooms_path, notice: 'You have successfully updated your room.'
+      redirect_to dashboard_path, notice: 'You have successfully updated your room.'
     else
       render :edit
     end
