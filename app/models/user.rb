@@ -9,6 +9,18 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
+  def join_room(room)
+    room.users << self
+    room.actions.each do |action|
+      actions << UserAction.create(action: action)
+    end
+  end
+
+  def leave_room
+    user_actions.destroy_all
+    update(room: nil)
+  end
+
   def room?
     room_id != nil
   end

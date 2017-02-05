@@ -9,3 +9,8 @@ h2 Actions:
 ul.actions
   - @actions.each do |action|
     li = action.name
+
+h2 UserActions:
+- @users.each do |user|
+  - user.actions.each do |action|
+    p = "#{user.name}: #{action.action.name}: #{action.value}"

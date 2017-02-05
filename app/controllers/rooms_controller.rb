@@ -16,7 +16,7 @@ class RoomsController < ApplicationController
   def create
     @room = current_user.build_room(room_params)
     if @room.save
-      @room.users << current_user
+      current_user.join_room(@room)
       redirect_to dashboard_path, notice: "You have successfully created new room \"#{@room.name}\"."
     else
       render :new
@@ -34,7 +34,7 @@ class RoomsController < ApplicationController
   end
 
   def destroy
-    @room.users = []
+    @room.users.each(&:leave_room)
     @room.actions = []
     @room.destroy
     redirect_to root_path
