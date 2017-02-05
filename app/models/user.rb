@@ -1,6 +1,8 @@
 # User is a preson, who lives in a hostel room
 class User < ApplicationRecord
   belongs_to :room, optional: true
+  has_many :user_actions
+  alias actions user_actions
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
