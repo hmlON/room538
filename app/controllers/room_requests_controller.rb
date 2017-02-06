@@ -34,6 +34,12 @@ class RoomRequestsController < ApplicationController
 
   def set_request
     @request = RoomRequest.find(params[:id])
+    require_request_ownership
+  end
+
+  def require_request_ownership
+    redirect_to room_requests_path, alert: "You don't have access to this request" if @request.sender == current_user ||
+                                                                                      @request.room == current_user.room
   end
 
   def request_params
