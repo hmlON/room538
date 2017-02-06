@@ -27,7 +27,7 @@ class RoomRequestsController < ApplicationController
 
   def destroy
     if @request.destroy
-      redirect_to room_requests_path, notice: 'Request successfullt deleted.'
+      redirect_to room_requests_path, notice: 'Request successfully deleted.'
     else
       redirect_to room_requests_path, alert: 'There was an error deleting your request'
     end
