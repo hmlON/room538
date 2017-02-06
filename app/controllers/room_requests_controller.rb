@@ -14,6 +14,15 @@ class RoomRequestsController < ApplicationController
     end
   end
 
+  def destroy
+    request = RoomRequest.find(params[:id])
+    if request.destroy
+      redirect_to rooms_path, notice: 'Request successfullt deleted.'
+    else
+      redirect_to rooms_path, alert: 'There was an error deleting your request'
+    end
+  end
+
   private
 
   def request_params

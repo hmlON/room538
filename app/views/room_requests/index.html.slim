@@ -16,7 +16,7 @@ h1.text-center Room Requests
           td = request.sender.name
           td = "#{time_ago_in_words request.created_at} ago"
           td accept
-          td decline
+          td = button_to 'Decline', room_request_path(id: request.id), method: :delete, class: 'btn btn-danger'
   
 h3.text-center Sent requests
 table.table
@@ -30,4 +30,4 @@ table.table
       td = i
       td = request.sender.name
       td = "#{time_ago_in_words request.created_at} ago"
-      td delete
+      td = button_to 'Delete', room_request_path(id: request.id), method: :delete, class: 'btn btn-danger'
