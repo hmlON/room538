@@ -5,4 +5,4 @@ div class="room card" id="room-#{room.id}"
     ul.room-users.list-inline
       - room.users.each do |user|
         li.list-inline-item = fa_icon 'user', text: user.name
-    a.btn.btn-primary href="#" Send a request
+    = link_to 'Send request to join', room_requests_path(room_request: {room_id: room.id}), method: :post, class: 'btn btn-primary'
