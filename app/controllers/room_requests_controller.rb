@@ -16,7 +16,7 @@ class RoomRequestsController < ApplicationController
     request = RoomRequest.new(request_params)
     request.sender = current_user
     if request.save
-      redirect_to rooms_path, notice: 'Request successfully sent.'
+      redirect_to room_requests_path, notice: 'Request successfully sent.'
     else
       redirect_to rooms_path, alert: 'There was an error sending your request'
     end
@@ -24,9 +24,9 @@ class RoomRequestsController < ApplicationController
 
   def destroy
     if @request.destroy
-      redirect_to rooms_path, notice: 'Request successfullt deleted.'
+      redirect_to room_requests_path, notice: 'Request successfullt deleted.'
     else
-      redirect_to rooms_path, alert: 'There was an error deleting your request'
+      redirect_to room_requests_path, alert: 'There was an error deleting your request'
     end
   end
 
