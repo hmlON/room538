@@ -36,6 +36,7 @@ class RoomsController < ApplicationController
   def destroy
     @room.users.each(&:leave_room)
     @room.actions = []
+    @room.room_requests = []
     @room.destroy
     redirect_to root_path
   end
