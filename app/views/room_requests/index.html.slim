@@ -1,7 +1,7 @@
 h1.text-center Room Requests
 
 - if current_user.room?
-  h3.text-center Accept to room
+  h3.text-center Requests to join your room
   table.table
     tr
       th #
@@ -13,7 +13,7 @@ h1.text-center Room Requests
       - if request.room_id == current_user.room_id
         tr
           td = i
-          td = request.recipient.name
+          td = request.sender.name
           td = "#{time_ago_in_words request.created_at} ago"
           td accept
           td decline
