@@ -13,8 +13,11 @@ class RoomRequestsController < ApplicationController
   end
 
   def create
+    if RoomRequest.exists?(room_id: request_params[:room_id])
+      redirect_to room_requests_path, alert: 'You already sent request to that room'
+      return
+    end
     request = RoomRequest.new(request_params)
-    request.sender = current_user
     if request.save
       redirect_to room_requests_path, notice: 'Request successfully sent.'
     else
@@ -38,11 +41,13 @@ class RoomRequestsController < ApplicationController
   end
 
   def require_request_ownership
-    redirect_to room_requests_path, alert: "You don't have access to this request" if @request.sender == current_user ||
-                                                                                      @request.room == current_user.room
+    redirect_to room_requests_path, alert: "You don't have access to this request" if @request.sender != current_user &&
+                                                                                      @request.room != current_user.room
   end
 
   def request_params
-    params.require(:room_request).permit(:room_id)
+    request_params = params.require(:room_request).permit(:room_id)
+    request_params[:sender_id] = current_user.id
+    request_params
   end
 end
