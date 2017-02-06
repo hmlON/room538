@@ -1,5 +1,8 @@
 class RoomRequestsController < ApplicationController
-  def index; end
+  def index
+    @requests_to_room = current_user.room.room_requests if current_user.room?
+    @sent_requests = current_user.sent_room_requests
+  end
 
   def create
     request = RoomRequest.new(request_params)
