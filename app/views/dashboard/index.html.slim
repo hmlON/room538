@@ -10,14 +10,14 @@ ul.user-cards.row
           li.list-group-item Next on smth
 
 h2 UserActions:
-- @room.actions.each do |room_action|
+- @room.room_actions.each do |room_action|
   table.table.table-hover
     thead
       th.w-25 Name
       th.w-75 = "#{room_action.name.capitalize} progress"
-    - @users.each do |user|
+    - room_action.user_actions.each do |user_action|
       tr
-        td = user.name
+        td = user_action.user.name
         td
           .progress
-            .progress-bar aria-valuemax="0" aria-valuemin="0" aria-valuenow="0" role="progressbar" style=("width: 39%")
+            .progress-bar aria-valuemax="0" aria-valuemin="0" aria-valuenow="#{user_action.value}" role="progressbar" style=("width: 39%")
