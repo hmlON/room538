@@ -9,12 +9,15 @@ ul.user-cards.row
         ul.list-group.list-group-flush
           li.list-group-item Next on smth
 
-h2 Actions:    
-ul.actions
-  - @actions.each do |action|
-    li = action.name
-
 h2 UserActions:
-- @users.each do |user|
-  - user.actions.each do |action|
-    p = "#{user.name}: #{action.name}: #{action.value}"
+- @room.actions.each do |room_action|
+  table.table.table-hover
+    thead
+      th.w-25 Name
+      th.w-75 = "#{room_action.name.capitalize} progress"
+    - @users.each do |user|
+      tr
+        td = user.name
+        td
+          .progress
+            .progress-bar aria-valuemax="0" aria-valuemin="0" aria-valuenow="0" role="progressbar" style=("width: 39%")
