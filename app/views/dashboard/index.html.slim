@@ -20,4 +20,4 @@ h2 UserActions:
         td = user_action.user.name
         td
           .progress
-            .progress-bar aria-valuemax="0" aria-valuemin="0" aria-valuenow="#{user_action.value}" role="progressbar" style=("width: 39%")
+            .progress-bar aria-valuemax="#{room_action.max_value}" aria-valuemin="0" aria-valuenow="#{user_action.value}" role="progressbar" style=("width: 39%")

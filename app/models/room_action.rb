@@ -9,4 +9,8 @@ class RoomAction < ApplicationRecord
     ids = room.users.includes(:user_actions).pluck('user_actions.id')
     UserAction.where(id: ids).where(action_id: action_id)
   end
+
+  def max_value
+    user_actions.pluck(:value).max
+  end
 end
