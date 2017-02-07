@@ -15,6 +15,7 @@ class User < ApplicationRecord
     room.actions.each do |action|
       actions << UserAction.create(action: action)
     end
+    sent_room_requests.destroy_all
   end
 
   def leave_room
