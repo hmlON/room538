@@ -7,4 +7,11 @@ class DashboardController < ApplicationController
     @users = @room.users
     @actions = @room.actions
   end
+
+  def do_action
+    action = current_user.actions.where(action_id: params[:user_action][:id]).first
+    action.value += 1
+    action.save
+    redirect_to dashboard_path
+  end
 end

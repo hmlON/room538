@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'dashboard' => 'dashboard#index'
+  post 'dashboard/do' => 'dashboard#do_action', as: 'do_action'
   root 'pages#index'
   post 'room_requests/accept/:id' => 'room_requests#accept', as: 'accept_room_request'
   resources :room_requests, only: [:index, :create, :destroy]
