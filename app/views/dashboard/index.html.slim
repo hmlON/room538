@@ -11,7 +11,7 @@ ul.user-cards.row
 
 h2 UserActions:
 - @room.room_actions.each do |room_action|
-  table.table.table-hover
+  table.table
     thead
       th.w-25 Name
       th.w-75 = "#{room_action.name.capitalize} progress"
