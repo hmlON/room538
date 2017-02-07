@@ -12,6 +12,6 @@ class DashboardController < ApplicationController
     action = current_user.actions.where(action_id: params[:user_action][:id]).first
     action.value += 1
     action.save
-    redirect_to dashboard_path
+    redirect_to dashboard_path, notice: "Good job, #{current_user.name}!"
   end
 end
