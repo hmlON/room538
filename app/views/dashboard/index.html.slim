@@ -16,10 +16,13 @@ ul.nav.nav-tabs.justify-content-center.m-3 role="tablist"
               h4.card-title = user.name
             ul.list-group.list-group-flush
               li.list-group-item Next on smth
-              
-    = form_tag(do_action_path, method: :post) do
-      = collection_select :user_action, :id, @room.actions, :id, :name
-      = submit_tag 'Done'
+      
+    .card.col-sm-4.offset-sm-4.text-center
+      .card-block
+        = form_tag(do_action_path, method: :post, class: 'text-center') do
+          .form-group
+            = collection_select :user_action, :id, @room.actions, :id, :name, { prompt: 'What have you done today?' }, { class: 'custom-select' }
+          = submit_tag 'Submit', class: 'btn btn-primary'
           
   #progress.tab-pane role="tabpanel"
     - @room.room_actions.each do |room_action|
