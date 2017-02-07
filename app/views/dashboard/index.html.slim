@@ -1,9 +1,13 @@
 h1 = "Room \"#{@room.name}\" dashboard"
 
-h2 Users:
-ul.users
+ul.user-cards.row
   - @users.each do |user|
-    li = user.name
+    .col-sm-3
+      .card.text-center
+        .card-block
+          h4.card-title = user.name
+        ul.list-group.list-group-flush
+          li.list-group-item Next on smth
 
 h2 Actions:    
 ul.actions
