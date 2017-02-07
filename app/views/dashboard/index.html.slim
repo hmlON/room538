@@ -1,22 +1,30 @@
-h1 = "Room \"#{@room.name}\" dashboard"
+h1.text-center Dashboard
 
-ul.user-cards.row
-  - @users.each do |user|
-    .col-sm-3
-      .card.text-center
-        .card-block
-          h4.card-title = user.name
-        ul.list-group.list-group-flush
-          li.list-group-item Next on smth
+ul.nav.nav-tabs.justify-content-center.m-3 role="tablist" 
+  li.nav-item
+    a.nav-link.active data-toggle="tab" href="#status" role="tab" Status
+  li.nav-item
+    a.nav-link data-toggle="tab" href="#progress" role="tab" Progress
 
-h2 UserActions:
-- @room.room_actions.each do |room_action|
-  table.table
-    thead
-      th.w-25 Name
-      th.w-75 = "#{room_action.name.capitalize} progress"
-    - room_action.user_actions.each do |user_action|
-      tr
-        td = user_action.user.name
-        td
-          = progress_tag(current: user_action.value, max: room_action.max_value)
+.tab-content
+  #status.tab-pane.active role="tabpanel"  
+    ul.user-cards.row
+      - @users.each do |user|
+        .col-sm-3
+          .card.text-center
+            .card-block
+              h4.card-title = user.name
+            ul.list-group.list-group-flush
+              li.list-group-item Next on smth
+          
+  #progress.tab-pane role="tabpanel"
+    - @room.room_actions.each do |room_action|
+      table.table
+        thead
+          th.w-25 Name
+          th.w-75 = "#{room_action.name.capitalize} progress"
+        - room_action.user_actions.each do |user_action|
+          tr
+            td = user_action.user.name
+            td
+              = progress_tag(current: user_action.value, max: room_action.max_value)
