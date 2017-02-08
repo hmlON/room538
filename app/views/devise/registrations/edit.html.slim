@@ -1,7 +1,7 @@
 h2 Edit your profile
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), defaults: { required: false }, html: { method: :put }) do |f|
   = devise_error_messages!
-  = f.input :name, autofocus: true
+  = f.input :name
   = f.input :email
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
     div = "Currently waiting confirmation for: #{resource.unconfirmed_email}"
