@@ -17,4 +17,8 @@ class RoomAction < ApplicationRecord
   def min_value
     user_actions.pluck(:value).min
   end
+
+  def next_on_user
+    user_actions.find_by(value: min_value).user
+  end
 end

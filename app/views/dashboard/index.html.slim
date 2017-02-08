@@ -16,10 +16,9 @@ ul.nav.nav-tabs.justify-content-center.m-3 role="tablist"
               h4.card-title = user.name
             ul.list-group.list-group-flush
               - @room.room_actions.each do |room_action|
-                - user.actions.where(action_id: room_action.action_id).each do |action|
-                  - if action.value == room_action.min_value
+                - if room_action.next_on_user == user
                     li.list-group-item
-                      = "Next on #{action.name}"
+                      = "Next on #{room_action.name}"
 
     .card.col-sm-4.offset-sm-4.text-center
       .card-block
