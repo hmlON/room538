@@ -13,4 +13,8 @@ class RoomAction < ApplicationRecord
   def max_value
     user_actions.pluck(:value).max
   end
+
+  def min_value
+    user_actions.pluck(:value).min
+  end
 end

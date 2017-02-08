@@ -15,8 +15,12 @@ ul.nav.nav-tabs.justify-content-center.m-3 role="tablist"
             .card-block
               h4.card-title = user.name
             ul.list-group.list-group-flush
-              li.list-group-item Next on smth
-      
+              - @room.room_actions.each do |room_action|
+                - user.actions.where(action_id: room_action.action_id).each do |action|
+                  - if action.value == room_action.min_value
+                    li.list-group-item
+                      = "Next on #{action.name}"
+
     .card.col-sm-4.offset-sm-4.text-center
       .card-block
         = form_tag(do_action_path, method: :post, class: 'text-center') do
