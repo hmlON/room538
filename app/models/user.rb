@@ -5,6 +5,8 @@ class User < ApplicationRecord
   alias actions user_actions
   has_many :sent_room_requests, class_name: 'RoomRequest', foreign_key: 'sender_id'
 
+  default_scope { order(:id) }
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 

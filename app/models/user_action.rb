@@ -3,6 +3,6 @@ class UserAction < ApplicationRecord
   belongs_to :user
   belongs_to :action
 
-  default_scope { includes(:action) }
+  default_scope { includes(:action).order(:id) }
   delegate :name, to: :action
 end
