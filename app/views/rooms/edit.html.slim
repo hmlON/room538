@@ -2,4 +2,4 @@ h2.text-center Edit room
 
 = render partial: 'form', locals: { room: @room, submit_button_text: 'Update room' }
 
-= link_to 'Destroy your room', rooms_path, method: :delete
+= link_to 'Destroy your room', rooms_path, method: :delete, class: 'btn btn-danger'
