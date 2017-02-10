@@ -9,6 +9,9 @@ UncommunicativeModuleName:
   exclude:
   - Room538
 
+NestedIterators:
+  max_allowed_nesting: 2
+
 "config/":
   IrresponsibleModule:
     enabled: false
