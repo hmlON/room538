@@ -5,8 +5,10 @@ header
       a id="settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
         = fa_icon 'gear 3x'
       .dropdown-menu.dropdown-menu-right aria-labelledby="settings"
-        = link_to 'Requests to join room', room_requests_path, class: 'dropdown-item'
+        h6.dropdown-header = "Signed in as <strong>#{current_user.name}</strong>".html_safe
+        .dropdown-divider
+        = link_to 'Edit your profile', edit_user_registration_path, class: 'dropdown-item'
         - if current_user.room?
           = link_to 'Edit your room', edit_room_path, class: 'dropdown-item'
-        = link_to 'Edit your profile', edit_user_registration_path, class: 'dropdown-item'
+        = link_to 'Requests to join room', room_requests_path, class: 'dropdown-item'
         = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
