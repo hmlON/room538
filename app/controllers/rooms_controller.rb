@@ -26,7 +26,7 @@ class RoomsController < ApplicationController
   def edit; end
 
   def update
-    if @room.update(room_params)
+    if RoomUpdater.new(@room, room_params).update
       redirect_to dashboard_path, notice: 'You have successfully updated your room.'
     else
       render :edit
