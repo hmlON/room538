@@ -7,4 +7,9 @@ class Room < ApplicationRecord
   has_many :room_requests, dependent: :destroy
 
   validates :name, presence: true
+
+  def destroy
+    self.actions = []
+    super
+  end
 end

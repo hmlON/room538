@@ -33,10 +33,10 @@ class RoomsController < ApplicationController
     end
   end
 
-  def destroy
-    @room.users.each(&:leave_room)
-    @room.actions = []
-    @room.destroy
+  def leave
+    room = current_user.room
+    current_user.leave_room
+    room.destroy if room.users.count.zero?
     redirect_to root_path
   end
 

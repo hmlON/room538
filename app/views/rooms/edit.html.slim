@@ -2,4 +2,13 @@ h2.text-center Edit room
 
 = render partial: 'form', locals: { room: @room, submit_button_text: 'Update room' }
 
-= link_to 'Destroy your room', rooms_path, method: :delete, class: 'btn btn-danger'
+.row
+  .col-sm-6.offset-sm-3
+    .card.card-outline-danger.text-center.m-2
+      h4.card-header.card-danger.card-inverse Leave room
+      .card-block
+        p.card-text
+          | If you leave this room you will lose all your progress and
+            you will need to send request to join again.
+        p.card-text If there are no people left in the room, it will be destroyed.
+        = link_to 'Leave room', leave_room_path, method: :patch, class: 'btn btn-danger'
