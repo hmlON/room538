@@ -4,13 +4,22 @@ h2.text-center Edit room
 
 hr
 
-.row
-  .col-sm-6.offset-sm-3
-    .card.card-outline-danger.text-center.m-2
-      h4.card-header.card-danger.card-inverse Leave room
-      .card-block
-        p.card-text
+.text-center
+  button.btn.btn-danger data-target="#leaveRoomModal" data-toggle="modal" type="button" Leave room
+
+#leaveRoomModal.modal.fade aria-hidden="true" aria-labelledby="leaveRoomModalLabel" role="dialog" tabindex="-1"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header.card-danger.card-inverse
+        h5#exampleModalLabel.modal-title Leave room
+        button.close aria-label="Close" data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+      .modal-body
+        p Warning!
+        p
           | If you leave this room you will lose all your progress and
             you will need to send request to join again.
-        p.card-text If there are no people left in the room, it will be destroyed.
-        = link_to 'Leave room', leave_room_path, method: :patch, class: 'btn btn-danger'
+        p If there are no people left in the room, it will be destroyed.
+      .modal-footer
+        button.btn.btn-secondary data-dismiss="modal" type="button" Close
+        button.btn.btn-danger type="button" Leave room
