@@ -22,4 +22,4 @@ hr
         p If there are no people left in the room, it will be destroyed.
       .modal-footer
         button.btn.btn-secondary data-dismiss="modal" type="button" Close
-        button.btn.btn-danger type="button" Leave room
+        = link_to 'Leave room', leave_room_path, method: :patch, class: 'btn btn-danger'
