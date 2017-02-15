@@ -7,7 +7,7 @@
       - @actions.each do |action|
         .checkbox.col-sm-6
           label 
-            = check_box_tag 'room[action_ids][]', action.id
+            = check_box_tag 'room[action_ids][]', action.id, room.action_ids.include?(action.id)
             = action.name
             - unless action.creator.nil?
               = link_to '&times;'.html_safe, action_path(id: action.id), method: :delete
