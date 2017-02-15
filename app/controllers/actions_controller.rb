@@ -1,6 +1,5 @@
 class ActionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :require_room_presence
 
   def create
     @action = Action.new(action_params)
@@ -8,15 +7,6 @@ class ActionsController < ApplicationController
       redirect_to :back, notice: "Action \"#{@action.name}\" has been successfully created"
     else
       redirect_to :back, alert: 'There was an error creating this action!'
-    end
-  end
-
-  def destroy
-    action = Action.find(params[:id])
-    if action.destroy
-      redirect_to :back, notice: "Action \"#{action.name}\" has been successfully deleted"
-    else
-      redirect_to :back, alert: 'There was an error deleting this action!'
     end
   end
 
