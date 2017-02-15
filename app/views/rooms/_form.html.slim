@@ -1,6 +1,6 @@
 = simple_form_for(room, url: rooms_path) do |f|
   = f.input :name, placeholder: 'Name', label: false
-  = f.association :actions, as: :check_boxes, label: 'Actions:'
+  = f.association :actions, collection: @actions, as: :check_boxes, label: 'Actions:'
   .text-center
     button.btn.btn-secondary data-target="#createActionModal" data-toggle="modal" type="button" Create new action
   .actions.text-center
