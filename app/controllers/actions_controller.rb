@@ -20,6 +20,15 @@ class ActionsController < ApplicationController
     end
   end
 
+  def destroy
+    action = Action.find(params[:id])
+    if action.destroy
+      redirect_to :back, notice: "Action \"#{action.name}\" has been successfully deleted"
+    else
+      redirect_to :back, alert: 'There was an error deleting this action!'
+    end
+  end
+
   private
 
   def action_params

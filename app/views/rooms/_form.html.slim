@@ -9,6 +9,8 @@
           label 
             = check_box_tag 'room[action_ids][]', action.id
             = action.name
+            - unless action.creator.nil?
+              = link_to '&times;'.html_safe, action_path(id: action.id), method: :delete
   .text-center
     button.btn.btn-secondary data-target="#createActionModal" data-toggle="modal" type="button" Create new action
   .actions.text-center
@@ -20,7 +22,7 @@
       .modal-header
         h5#createActionModalLabel.modal-title Create new action
         button.close aria-label="Close" data-dismiss="modal" type="button"
-          span aria-hidden="true"  &times;
+          span aria-hidden="true" &times;
       .modal-body
         = render "actions/form"
       .modal-footer

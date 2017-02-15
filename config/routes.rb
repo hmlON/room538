@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post 'room_requests/accept/:id' => 'room_requests#accept', as: 'accept_room_request'
   resources :room_requests, only: [:index, :create, :destroy]
   resources :rooms, only: [:index, :new, :create]
-  resources :actions, only: [:new, :create]
+  resources :actions, only: [:new, :create, :destroy]
   get '/rooms/edit' => 'rooms#edit', as: 'edit_room'
   patch '/rooms' => 'rooms#update'
   devise_for :users
