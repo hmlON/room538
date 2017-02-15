@@ -14,6 +14,8 @@ class ActionsController < ApplicationController
   private
 
   def action_params
-    params.require(:new_action).permit(:name)
+    params.require(:new_action)
+          .permit(:name)
+          .tap { |params| params[:creator_id] = current_user.id }
   end
 end
