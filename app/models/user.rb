@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :user_actions
   alias actions user_actions
   has_many :sent_room_requests, class_name: 'RoomRequest', foreign_key: 'sender_id'
+  has_many :created_actions, class_name: 'Action'
 
   default_scope { order(:id) }
 

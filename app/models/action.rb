@@ -3,6 +3,7 @@
 class Action < ApplicationRecord
   has_many :room_actions
   has_many :rooms, through: :room_actions
+  belongs_to :creator, class_name: 'User', optional: true, foreign_key: :creator_id
 
   validates :name, presence: true
 
