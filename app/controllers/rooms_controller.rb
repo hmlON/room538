@@ -24,7 +24,11 @@ class RoomsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    ids = current_user.room.user_ids
+    ids << nil # add default actions
+    @actions = Action.where(creator_id: ids)
+  end
 
   def update
     if RoomUpdater.new(@room, room_params).update
