@@ -20,7 +20,7 @@ class RoomsController < ApplicationController
       current_user.join_room(@room)
       redirect_to dashboard_path, notice: "You have successfully created new room \"#{@room.name}\"."
     else
-      render :new
+      redirect_to new_room_path, alert: 'There was an error creating the room!'
     end
   end
 
