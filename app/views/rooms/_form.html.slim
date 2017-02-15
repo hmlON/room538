@@ -1,6 +1,14 @@
 = simple_form_for(room, url: rooms_path) do |f|
   = f.input :name, placeholder: 'Name', label: false
-  = f.association :actions, collection: @actions, as: :check_boxes, label: 'Actions:'
+  .form-group.check_boxes.required.room_actions
+    label.controll-label Actions:
+    = hidden_field(:room, :action_ids, multiple: true)
+    .row
+      - @actions.each do |action|
+        .checkbox.col-sm-6
+          label 
+            = check_box_tag 'room[action_ids][]', action.id
+            = action.name
   .text-center
     button.btn.btn-secondary data-target="#createActionModal" data-toggle="modal" type="button" Create new action
   .actions.text-center
