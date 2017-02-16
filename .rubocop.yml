@@ -17,6 +17,10 @@ Style/Documentation:
     - 'config/application.rb'
     - 'db/migrate/*.rb'
 
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*'
+
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/*.rb'
