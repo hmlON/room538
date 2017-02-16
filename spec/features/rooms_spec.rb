@@ -43,6 +43,22 @@ RSpec.feature 'Rooms' do
     expect(room.actions).to include(new_action)
   end
 
+  scenario 'User leaves room' do
+    user = room.users.first
+    sign_in user
+    visit dashboard_path
+    click_link 'Edit your room'
+
+    click_button 'Leave room'
+    within '#leaveRoomModal' do
+      click_on 'Leave room'
+    end
+
+    user.reload
+    expect(user.room).to be_nil
+    expect(Room.where(id: room.id)).to be_empty
+  end
+
   scenario 'User looks at all rooms' do
     rooms = create_list(:room, 3)
 
