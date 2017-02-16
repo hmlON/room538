@@ -9,7 +9,6 @@ class RoomsController < ApplicationController
   end
 
   def new
-    redirect_to dashboard_path, alert: 'You already have a room!' if current_user.room?
     @actions = Action.where(creator_id: [nil, current_user.id])
     @room = Room.new
   end
