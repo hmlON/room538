@@ -4,12 +4,12 @@ FactoryGirl.define do
 
     after :build do |room|
       room.actions << create_list(:action, 3)
-      room.users << create(:user)
+      create(:user).join_room(room)
     end
 
     factory :room_with_users do
       after :build do |room|
-        room.users << create_list(:user, 3)
+        3.times { create(:user).join_room(room) }
       end
     end
   end
