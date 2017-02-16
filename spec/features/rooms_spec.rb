@@ -1,5 +1,6 @@
 RSpec.feature 'Rooms' do
   let(:user) { create(:user) }
+  let(:room) { create(:room) }
 
   background do
     sign_in user
@@ -23,6 +24,23 @@ RSpec.feature 'Rooms' do
     expect(page).to have_content 'You have successfully created new room "My room".'
     expect(page).to have_content user.name
     expect(page).to have_content "Next on #{action.name}"
+  end
+
+  scenario 'User updates room' do
+    user.join_room(room)
+    new_action = create(:action, creator: user)
+    visit dashboard_path
+    click_link 'Edit your room'
+
+    fill_in 'Name', with: 'New room name'
+    # uncheck room.actions.first.name
+    check new_action.name
+    click_button 'Update room'
+
+    expect(page).to have_content 'You have successfully updated your room.'
+    room.reload
+    expect(room.name).to eq 'New room name'
+    expect(room.actions).to include(new_action)
   end
 
   scenario 'User looks at all rooms' do
