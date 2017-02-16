@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :action do
-    name { Faker::Hacker.ingverb }
+    sequence(:name) { |n| Faker::Hacker.ingverb + n.to_s }
   end
 end
