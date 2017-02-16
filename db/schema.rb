@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(version: 20_170_215_121_139) do
     t.datetime 'created_at',                          null: false
     t.datetime 'updated_at',                          null: false
     t.integer  'room_id'
-    t.string   'photo_url'
     t.index ['email'], name: 'index_users_on_email', unique: true, using: :btree
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true, using: :btree
     t.index ['room_id'], name: 'index_users_on_room_id', using: :btree

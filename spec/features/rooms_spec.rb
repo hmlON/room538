@@ -9,10 +9,20 @@ RSpec.feature 'Rooms' do
   scenario 'User creates new room' do
     click_link 'Create new room'
 
+    action = build :action
+    click_button 'Create new action'
+    within 'form#new_new_action' do
+      fill_in 'Name', with: action.name
+      click_button 'Create action'
+    end
+
     fill_in 'Name', with: 'My room'
+    check action.name
     click_button 'Create room'
 
     expect(page).to have_content 'You have successfully created new room "My room".'
+    expect(page).to have_content user.name
+    expect(page).to have_content "Next on #{action.name}"
   end
 
   scenario 'User looks at all rooms' do
