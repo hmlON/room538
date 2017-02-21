@@ -1,5 +1,6 @@
 .activity.card.card-inverse.card-info
   .card-block
     .card-text
-      = "#{activity.owner.name} has done #{activity.trackable.name} "
-      = activity.created_at
+      = "#{activity.owner.name} has done "
+      em = "\"#{activity.trackable.name}\" "
+      = activity_time_tag(activity.created_at)
