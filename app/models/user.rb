@@ -3,7 +3,6 @@
 class User < ApplicationRecord
   belongs_to :room, optional: true
   has_many :user_actions
-  alias actions user_actions
   has_many :sent_room_requests, class_name: 'RoomRequest', foreign_key: 'sender_id'
   has_many :created_actions, class_name: 'Action', foreign_key: 'creator_id'
 
@@ -17,8 +16,8 @@ class User < ApplicationRecord
 
   def join_room(room)
     room.users << self
-    room.actions.each do |action|
-      actions << UserAction.create(action: action)
+    room.room_actions.each do |room_action|
+      user_actions << UserAction.create(room_action: room_action)
     end
     sent_room_requests.destroy_all
   end

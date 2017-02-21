@@ -60,11 +60,11 @@ ActiveRecord::Schema.define(version: 20_170_225_072_733) do
 
   create_table 'user_actions', force: :cascade do |t|
     t.integer  'user_id'
-    t.integer  'action_id'
+    t.integer  'room_action_id'
     t.integer  'value', default: 0
-    t.datetime 'created_at',             null: false
-    t.datetime 'updated_at',             null: false
-    t.index ['action_id'], name: 'index_user_actions_on_action_id', using: :btree
+    t.datetime 'created_at',                 null: false
+    t.datetime 'updated_at',                 null: false
+    t.index ['room_action_id'], name: 'index_user_actions_on_room_action_id', using: :btree
     t.index ['user_id'], name: 'index_user_actions_on_user_id', using: :btree
   end
 
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20_170_225_072_733) do
   add_foreign_key 'room_actions', 'actions'
   add_foreign_key 'room_actions', 'rooms'
   add_foreign_key 'room_requests', 'rooms'
-  add_foreign_key 'user_actions', 'actions'
+  add_foreign_key 'user_actions', 'actions', column: 'room_action_id'
   add_foreign_key 'user_actions', 'users'
   add_foreign_key 'users', 'rooms'
 end

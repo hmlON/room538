@@ -3,7 +3,7 @@
 class Room < ApplicationRecord
   has_many :users
   has_many :room_actions
-  has_many :actions, through: :room_actions
+  # has_many :actions, through: :room_actions
   has_many :room_requests, dependent: :destroy
 
   validates :name, presence: true

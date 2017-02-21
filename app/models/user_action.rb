@@ -2,10 +2,10 @@
 # some action
 class UserAction < ApplicationRecord
   belongs_to :user
-  belongs_to :action
+  belongs_to :room_action
 
-  delegate :name, to: :action
-  default_scope { includes(:action).order(:id) }
+  default_scope { includes(:room_action) }
+  delegate :name, to: :room_action
 
   include PublicActivity::Common
   has_many :activities, as: :trackable, class_name: 'PublicActivity::Activity', dependent: :destroy
