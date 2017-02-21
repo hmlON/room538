@@ -1,5 +1,7 @@
 # Class for association users nad actions
 class UserAction < ApplicationRecord
+  include PublicActivity::Common
+
   belongs_to :user
   belongs_to :action
 

@@ -31,3 +31,6 @@ Metrics/BlockLength:
     - 'db/schema.rb'
     - 'spec/**/*'
     - 'config/initializers/simple_form_bootstrap.rb'
+
+Metrics/AbcSize:
+  Max: 17

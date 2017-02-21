@@ -10,8 +10,8 @@ class DashboardController < ApplicationController
 
   def do_action
     action = current_user.actions.where(action_id: params[:user_action][:id]).first
-    action.value += 1
-    action.save
+    action.update(value: action.value + 1)
+    action.create_activity :done, owner: current_user
     redirect_to dashboard_path, notice: "Good job, #{current_user.name}!"
   end
 end
