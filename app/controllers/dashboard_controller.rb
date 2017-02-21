@@ -14,4 +14,8 @@ class DashboardController < ApplicationController
     action.create_activity :done, owner: current_user
     redirect_to dashboard_path, notice: "Good job, #{current_user.name}!"
   end
+
+  def history
+    @activities = PublicActivity::Activity.order('created_at desc').where(owner_id: current_user.room.user_ids)
+  end
 end
