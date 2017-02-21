@@ -16,6 +16,6 @@ module DashboardHelper
     content_tag(:span,
                 time_ago_in_words(time) + ' ago.',
                 class: 'activity--time',
-                title: time.strftime('%d %b %Y %T'))
+                title: time.strftime('%d %b %Y %T %Z'))
   end
 end
