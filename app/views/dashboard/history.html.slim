@@ -1,3 +1,6 @@
-- @activities.each do |activity|
-  .activity
-    = render_activity activity
+h2.text-center History
+
+.row
+  .history
+    - @activities.each do |activity|
+      = render_activity activity
