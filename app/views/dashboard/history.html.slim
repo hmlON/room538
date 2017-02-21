@@ -2,5 +2,7 @@ h2.text-center History
 
 .row
   .history
+    - if @activities.empty?
+      .no-activities There is nothing done yet. Try sumbitting done action.
     - @activities.each do |activity|
       = render_activity activity
