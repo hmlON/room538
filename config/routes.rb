@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get '/rooms/edit' => 'rooms#edit', as: 'edit_room'
   patch '/rooms' => 'rooms#update'
   devise_for :users
+  get 'about' => 'pages#about'
 end
