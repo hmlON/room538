@@ -12,5 +12,7 @@ header
           = link_to 'Room history', history_path, class: 'dropdown-item'
         = link_to 'Requests to join room', room_requests_path, class: 'dropdown-item'
         .dropdown-divider
+        = link_to 'About website', about_path, class: 'dropdown-item'
+        .dropdown-divider
         = link_to 'Edit your profile', edit_user_registration_path, class: 'dropdown-item'
         = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
