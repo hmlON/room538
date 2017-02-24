@@ -1,4 +1,4 @@
-# Class for association rooms nad actions
+# Room actions are actions that specific room uses
 class RoomAction < ApplicationRecord
   belongs_to :room
   belongs_to :action
