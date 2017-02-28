@@ -32,14 +32,20 @@ class User < ApplicationRecord
     room_id != nil
   end
 
+  # :reek:DuplicateMethodCall { allow_calls: ['auth.info', 'auth.provider', 'auth.uid'] }
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      info = auth['info']
-      user.email = info.email
-      user.password = Devise.friendly_token[0, 20]
-      user.name = info.name
-      # user.image = info.image # assuming the user model has an image
+    if where(email: auth.info.email).exists?
+      user = find_by(email: auth.info.email)
+      user.update(provider: auth.provider, uid: auth.uid)
+      return user
     end
+
+    create(email: auth.info.email,
+           password: Devise.friendly_token[0, 20],
+           name: auth.info.name,
+           provider: auth.provider,
+           uid: auth.uid)
+    # image: auth.info.image # assuming the user model has an image
   end
 
   def self.new_with_session(params, session)

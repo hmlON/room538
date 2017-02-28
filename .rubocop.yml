@@ -4,6 +4,9 @@ Rails:
 Metrics/LineLength:
   Max: 120
 
+Metrics/AbcSize:
+  Max: 20
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
@@ -31,6 +34,3 @@ Metrics/BlockLength:
     - 'db/schema.rb'
     - 'spec/**/*'
     - 'config/initializers/simple_form_bootstrap.rb'
-
-Metrics/AbcSize:
-  Max: 17
