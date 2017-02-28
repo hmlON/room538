@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   resources :actions, only: [:new, :create, :destroy]
   get '/rooms/edit' => 'rooms#edit', as: 'edit_room'
   patch '/rooms' => 'rooms#update'
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   get 'about' => 'pages#about'
 end

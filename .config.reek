@@ -9,6 +9,9 @@ UncommunicativeModuleName:
   exclude:
   - Room538
 
+TooManyStatements:
+  max_statements: 7
+
 NestedIterators:
   max_allowed_nesting: 2
 
