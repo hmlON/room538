@@ -12,6 +12,7 @@ gem 'devise'
 gem 'font-awesome-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem 'omniauth-vkontakte'
 gem 'pg', '~> 0.18'
 gem 'public_activity'
 gem 'puma', '~> 3.0'
@@ -29,6 +30,7 @@ end
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
