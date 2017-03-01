@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_170_225_072_733) do
+ActiveRecord::Schema.define(version: 20_170_301_183_348) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20_170_225_072_733) do
     t.index %w(trackable_id trackable_type), name: 'index_activities_on_trackable_id_and_trackable_type', using: :btree
   end
 
-  create_table 'room_actions', id: false, force: :cascade do |t|
+  create_table 'room_actions', force: :cascade do |t|
     t.integer 'room_id'
     t.integer 'action_id'
     t.index ['action_id'], name: 'index_room_actions_on_action_id', using: :btree
