@@ -1,5 +1,8 @@
 header
   .back = link_to fa_icon('arrow-left 3x'), dashboard_path, title: 'Back to dashboard'
+
+  h1.header-title = yield(:title)
+
   .settings
     .dropdown
       a id="settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
