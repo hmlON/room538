@@ -9,8 +9,7 @@ class RoomUpdater
   end
 
   def update
-    create_added_user_actions
-    delete_removed_user_actions
+    delete_removed_room_actions
     update_room
   end
 
@@ -18,26 +17,12 @@ class RoomUpdater
     room.update(params)
   end
 
-  def create_added_user_actions
-    room.users.each do |user|
-      added_actions.each do |action|
-        user.actions << UserAction.create(action: action)
-      end
-    end
+  def delete_removed_room_actions
+    removed_room_actions.destroy_all
   end
 
-  def delete_removed_user_actions
-    room.users.each do |user|
-      user.actions.where(action_id: removed_action_ids).destroy_all
-    end
-  end
-
-  def added_action_ids
-    params[:action_ids].drop(1).map(&:to_i) - room.action_ids
-  end
-
-  def added_actions
-    Action.find(added_action_ids)
+  def removed_room_actions
+    room.room_actions.where(action_id: removed_action_ids)
   end
 
   def removed_action_ids
