@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_170_301_183_348) do
+ActiveRecord::Schema.define(version: 20_170_301_222_551) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20_170_301_183_348) do
   add_foreign_key 'room_actions', 'actions'
   add_foreign_key 'room_actions', 'rooms'
   add_foreign_key 'room_requests', 'rooms'
-  add_foreign_key 'user_actions', 'actions', column: 'room_action_id'
+  add_foreign_key 'user_actions', 'room_actions'
   add_foreign_key 'user_actions', 'users'
   add_foreign_key 'users', 'rooms'
 end
