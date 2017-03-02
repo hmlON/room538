@@ -1,8 +1,7 @@
 # Action is what people do in their rooms.
 # e.g.: taking out trash
 class Action < ApplicationRecord
-  has_many :room_actions
-  has_many :rooms, through: :room_actions
+  has_many :room_actions, dependent: :destroy
   belongs_to :creator, class_name: 'User', optional: true, foreign_key: :creator_id
 
   validates :name, presence: true
