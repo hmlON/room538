@@ -9,7 +9,7 @@ ul.nav.nav-tabs.justify-content-center.m-3 role="tablist"
 .tab-content
   #status.tab-pane.active role="tabpanel"  
     ul.user-cards.row
-      - @users.each do |user|
+      - @room.users.each do |user|
         .col-sm-3.m-2
           .card.text-center
             .card-block
@@ -25,7 +25,7 @@ ul.nav.nav-tabs.justify-content-center.m-3 role="tablist"
         = form_tag(do_action_path, method: :post, class: 'text-center') do
           .form-group
             = collection_select :user_action, :id, 
-                                @room.actions, :id, :name,
+                                current_user.user_actions, :id, :name,
                                 { prompt: 'What have you done today?', disabled: false },
                                 { class: 'custom-select', required: true }
           = submit_tag 'Submit', class: 'btn btn-primary'
