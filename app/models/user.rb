@@ -16,7 +16,7 @@ class User < ApplicationRecord
   def join_room(room)
     room.users << self
     room.room_actions.each do |room_action|
-      user_actions << UserAction.create(room_action: room_action)
+      user_actions.create(room_action: room_action)
     end
     sent_room_requests.destroy_all
   end
