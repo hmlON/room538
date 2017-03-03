@@ -44,6 +44,14 @@ class RoomsController < ApplicationController
     redirect_to root_path
   end
 
+  def reset_progress
+    current_user.room.room_actions.flat_map(&:user_actions).each do |user_action|
+      user_action.update(value: 0)
+    end
+
+    redirect_to dashboard_path, notice: 'Resetted room progress successfully.'
+  end
+
   private
 
   def set_room

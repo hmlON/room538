@@ -5,7 +5,10 @@
 hr
 
 .text-center
-  button.btn.btn-danger data-target="#leaveRoomModal" data-toggle="modal" type="button" Leave room
+  div
+    button.btn.btn-danger.m-1 data-target="#resetProgressModal" data-toggle="modal" type="button" Reset room progress
+  div
+    button.btn.btn-danger.m-1 data-target="#leaveRoomModal" data-toggle="modal" type="button" Leave room
 
 #leaveRoomModal.modal.fade aria-hidden="true" aria-labelledby="leaveRoomModalLabel" role="dialog" tabindex="-1"
   .modal-dialog role="document"
@@ -23,3 +26,18 @@ hr
       .modal-footer
         button.btn.btn-secondary data-dismiss="modal" type="button" Close
         = link_to 'Leave room', leave_room_path, method: :patch, class: 'btn btn-danger'
+
+#resetProgressModal.modal.fade aria-hidden="true" aria-labelledby="resetProgressModalLabel" role="dialog" tabindex="-1"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header.card-danger.card-inverse
+        h5#resetProgressModalLabel.modal-title Reset room progress
+        button.close aria-label="Close" data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+      .modal-body
+        p Warning!
+        p You will lose all your progress.
+        p Are you sure?
+      .modal-footer
+        button.btn.btn-secondary data-dismiss="modal" type="button" Close
+        = link_to 'Reset', reset_room_progress_path, method: :patch, class: 'btn btn-danger'

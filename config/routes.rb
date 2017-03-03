@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post 'dashboard/do' => 'dashboard#do_action', as: 'do_action'
   root 'pages#index'
   patch 'room/leave' => 'rooms#leave', as: 'leave_room'
+  patch 'room/reset-progress' => 'rooms#reset_progress', as: 'reset_room_progress'
   post 'room_requests/accept/:id' => 'room_requests#accept', as: 'accept_room_request'
   resources :room_requests, only: [:index, :create, :destroy]
   resources :rooms, only: [:index, :new, :create]
