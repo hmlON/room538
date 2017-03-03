@@ -15,7 +15,7 @@ header
         h6.dropdown-header = "Signed in as <strong>#{current_user.name}</strong>".html_safe
         .dropdown-divider
         - if current_user.room?
-          = link_to 'Edit your room', edit_room_path, class: 'dropdown-item'
+          = link_to 'Room settings', edit_room_path, class: 'dropdown-item'
         = link_to room_requests_path, class: 'dropdown-item' do
           | Requests to join room 
           - if current_user.room?
