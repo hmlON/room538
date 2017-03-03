@@ -7,4 +7,7 @@ class Room < ApplicationRecord
   has_many :room_requests, dependent: :destroy
 
   validates :name, presence: true
+
+  include PublicActivity::Common
+  has_many :activities, as: :trackable, class_name: 'PublicActivity::Activity', dependent: :destroy
 end

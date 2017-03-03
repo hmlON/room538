@@ -45,9 +45,12 @@ class RoomsController < ApplicationController
   end
 
   def reset_progress
-    current_user.room.room_actions.flat_map(&:user_actions).each do |user_action|
+    room = current_user.room
+    room.room_actions.flat_map(&:user_actions).each do |user_action|
       user_action.update(value: 0)
     end
+
+    room.create_activity :resetted, owner: current_user
 
     redirect_to dashboard_path, notice: 'Resetted room progress successfully.'
   end
