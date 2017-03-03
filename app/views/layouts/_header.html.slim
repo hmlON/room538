@@ -16,7 +16,6 @@ header
         .dropdown-divider
         - if current_user.room?
           = link_to 'Edit your room', edit_room_path, class: 'dropdown-item'
-          = link_to 'Room history', history_path, class: 'dropdown-item'
         = link_to room_requests_path, class: 'dropdown-item' do
           | Requests to join room 
           - if current_user.room?

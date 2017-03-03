@@ -19,7 +19,9 @@ RSpec.feature 'Dashboard' do
     expect(page).to have_content 'Good job'
     expect(room_action.next_on_user).not_to eq user
 
-    visit history_path
-    expect(page).to have_content "#{user.name} has done \"#{room_action.name}\""
+    click_on 'History'
+    within '#history' do
+      expect(page).to have_content "#{user.name} has done \"#{room_action.name}\""
+    end
   end
 end

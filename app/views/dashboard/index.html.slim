@@ -5,6 +5,8 @@ ul.nav.nav-tabs.justify-content-center.m-3 role="tablist"
     a.nav-link.active data-toggle="tab" href="#status" role="tab" Status
   li.nav-item
     a.nav-link data-toggle="tab" href="#progress" role="tab" Progress
+  li.nav-item
+    a.nav-link data-toggle="tab" href="#history" role="tab" History
 
 .tab-content
   #status.tab-pane.active role="tabpanel"  
@@ -41,3 +43,6 @@ ul.nav.nav-tabs.justify-content-center.m-3 role="tablist"
             td = user_action.user.name
             td
               = progress_tag(current: user_action.value, max: room_action.max_value)
+
+  #history.tab-pane role="tabpanel"
+    = render 'history'
