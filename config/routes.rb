@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'dashboard' => 'dashboard#index'
   post 'dashboard/do' => 'dashboard#do_action', as: 'do_action'
+  post 'dashboard/punish' => 'dashboard#punish', as: 'punish'
   root 'pages#index'
   patch 'room/leave' => 'rooms#leave', as: 'leave_room'
   patch 'room/reset-progress' => 'rooms#reset_progress', as: 'reset_room_progress'

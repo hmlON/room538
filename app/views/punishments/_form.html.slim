@@ -1,0 +1,12 @@
+= form_tag(punish_path, method: :post, class: 'form') do
+  .form-group.check_boxes.required.punishment
+    label.controll-label Users:
+    = hidden_field(:punishment, :user_ids, multiple: true)
+    .row
+      - current_user.room.users.each do |user|
+        .checkbox.col-sm-6
+          label for="#{dom_id(user)}"
+            = check_box_tag 'punishment[user_ids][]', user.id
+            = user.name
+  .actions.text-center
+    = submit_tag 'Punish', class: 'btn btn-warning'
