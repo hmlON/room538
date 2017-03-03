@@ -1,0 +1,11 @@
+ul.user-cards.row
+  - @room.users.each do |user|
+    .col-sm-3.m-2
+      .card.text-center
+        .card-block
+          h4.card-title = user.name
+        ul.list-group.list-group-flush
+          - @room.room_actions.each do |room_action|
+            - if room_action.next_on_user == user
+                li.list-group-item
+                  = "Next on #{room_action.name}"
