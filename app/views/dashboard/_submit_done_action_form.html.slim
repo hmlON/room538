@@ -1,0 +1,7 @@
+= form_tag(do_action_path, method: :post, class: 'text-center') do
+  .form-group
+    = collection_select :user_action, :id, 
+                        current_user.user_actions, :id, :name,
+                        { prompt: 'What have you done today?', disabled: false },
+                        { class: 'custom-select', required: true }
+  = submit_tag 'Submit', class: 'btn btn-primary'
