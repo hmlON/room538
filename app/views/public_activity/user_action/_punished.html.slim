@@ -1,0 +1,6 @@
+.activity.card.card-inverse.card-warning
+  .card-block
+    .card-text
+      = "#{activity.trackable.user.name} has been punished by #{activity.owner.name} by "
+      em = "removing 1 \"taking out trash\" point "
+      = activity_time_tag(activity.created_at)

@@ -24,6 +24,7 @@ class DashboardController < ApplicationController
     users.each do |user|
       user_action = user.user_actions.find_by(room_action_id: room_action.id)
       user_action.update(value: user_action.value - 1)
+      user_action.create_activity :punished, owner: current_user
     end
 
     redirect_to dashboard_path, notice: 'Roommates are successfully punished.'
