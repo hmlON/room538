@@ -30,7 +30,7 @@ RSpec.feature 'Rooms' do
     user.join_room(room)
     new_action = create(:action, creator: user)
     visit dashboard_path
-    click_link 'Edit your room'
+    click_link 'Room settings'
 
     fill_in 'Name', with: 'New room name'
     # uncheck room.actions.first.name
@@ -47,7 +47,7 @@ RSpec.feature 'Rooms' do
     user = room.users.first
     sign_in user
     visit dashboard_path
-    click_link 'Edit your room'
+    click_link 'Room settings'
 
     click_button 'Leave room'
     within '#leaveRoomModal' do
