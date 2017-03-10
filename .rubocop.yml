@@ -6,6 +6,8 @@ Metrics/LineLength:
 
 Metrics/AbcSize:
   Max: 20
+  Exclude:
+    - 'app/models/user.rb'
 
 Style/FrozenStringLiteralComment:
   Enabled: false

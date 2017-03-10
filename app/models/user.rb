@@ -34,16 +34,15 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     if where(email: auth.info.email).exists?
       user = find_by(email: auth.info.email)
-      user.update(provider: auth.provider, uid: auth.uid)
+      user.update(provider: auth.provider, uid: auth.uid, photo_url: auth.info.image)
       return user
     end
 
     create(email: auth.info.email,
            password: Devise.friendly_token[0, 20],
            name: auth.info.name,
-           provider: auth.provider,
-           uid: auth.uid)
-    # image: auth.info.image # assuming the user model has an image
+           provider: auth.provider, uid: auth.uid,
+           photo_url: auth.info.image)
   end
 
   def self.new_with_session(params, session)
