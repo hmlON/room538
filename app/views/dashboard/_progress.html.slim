@@ -1,10 +1,9 @@
 - @room.room_actions.each do |room_action|
   table.table
     thead
-      th.w-25 Name
-      th.w-75 = "#{room_action.name.capitalize} progress"
+      h5.text-center = "#{room_action.name.capitalize} progress"
     - room_action.user_actions.each do |user_action|
       tr
-        td = user_action.user.name
-        td
+        td.w-25 = user_action.user.name
+        td.w-75
           = progress_tag(current: user_action.value, min: room_action.min_value - 1, max: room_action.max_value)
