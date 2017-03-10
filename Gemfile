@@ -39,6 +39,7 @@ end
 group :development do
   gem 'guard-rspec', require: false
   gem 'listen', '~> 3.0.5'
+  gem 'overcommit', require: false
   gem 'reek', require: false
   gem 'rubocop', require: false
   gem 'spring'
