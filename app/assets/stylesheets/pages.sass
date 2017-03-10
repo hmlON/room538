@@ -1,16 +1,18 @@
 .page-wrapper
   font-size: 24px
-  height: 90vh
+  height: calc(100vh - 2*100px)
   display: flex
   flex-direction: column
   justify-content: center
   align-items: center
-  align-self: center
+  text-align: center
 
-  h1
-    margin-bottom: 20px
+.no-header-fix
+  height: 100px
 
 @include media-breakpoint-down(xs)
   .page-wrapper
     display: block
-    text-align: center
+
+  .no-header-fix
+    height: 10px
