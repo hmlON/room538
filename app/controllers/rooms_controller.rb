@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_room_presence, only: [:edit, :update, :destroy]
-  before_action :require_room_absence, only: [:index, :new, :create]
+  before_action :require_room_absence, only: [:new, :create]
   before_action :set_room, only: [:edit, :update, :destroy]
 
   def index
