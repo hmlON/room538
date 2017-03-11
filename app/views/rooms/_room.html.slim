@@ -1,8 +1,13 @@
-div class="room card" id="room-#{room.id}"
-  .card-header = "Room: \"#{room.name}\""
-  .card-block
-    h4.card-title Users:
-    ul.room-users.list-inline
-      - room.users.each do |user|
-        li.list-inline-item = fa_icon 'user', text: user.name
-    = link_to 'Send request to join', room_requests_path(room_request: {room_id: room.id}), method: :post, class: 'btn btn-primary'
+.col-sm-6
+  .room.card id="room-#{room.id}"
+    .card-block
+      h4.card-title.text-center = "Room: \"#{room.name}\""
+
+      ul.list-group.list-group-flush
+        - room.users.each do |user|
+          li.list-group-item.media
+            .media-body = user.name
+            .user-photo-inline = user_photo(user, photo_class: 'user-photo-inline', icon_size: '2x')
+
+      .room-actions.text-center
+        = link_to 'Send request to join', room_requests_path(room_request: {room_id: room.id}), method: :post, class: 'btn btn-primary'
