@@ -3,11 +3,8 @@ ul.user-cards.row
     .col-lg-3.col-md-4.col-sm-6
       .card.text-center
         .card-block
-          .dashbooard-user-photo.card-img-top
-            - if user.photo_url
-              img src=user.photo_url class='rounded-circle'
-            - else
-              = fa_icon 'user-circle-o 3x', title: 'To get a photo you should sign in with VK'
+          .card-img-top
+            = user_photo(user, photo_class: 'dashbooard-user-photo', icon_size: '3x')
           h4.dashboard-user-name.card-title = user.name
         ul.list-group.list-group-flush
           - @room.room_actions.each do |room_action|

@@ -9,6 +9,9 @@ UncommunicativeModuleName:
   exclude:
   - Room538
 
+DuplicateMethodCall:
+  max_calls: 2
+
 TooManyStatements:
   max_statements: 8
 
