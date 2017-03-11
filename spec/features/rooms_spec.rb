@@ -62,7 +62,10 @@ RSpec.feature 'Rooms' do
   scenario 'User looks at all rooms' do
     rooms = create_list(:room, 3)
 
-    click_link 'All rooms'
+    within '.page-wrapper' do
+      click_link 'All rooms'
+    end
+
     rooms.each do |room|
       expect(page).to have_content room.name
       room.users.each do |user|
