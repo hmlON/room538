@@ -13,7 +13,7 @@ class DashboardController < ApplicationController
     action.update(value: action.value + 1)
 
     action.create_activity :done, owner: current_user
-    redirect_to dashboard_path, notice: "Good job, #{current_user.name}!"
+    redirect_to dashboard_path, notice: "Good job, #{current_user.name}, for \"#{action.name}\"!"
   end
 
   def punish
