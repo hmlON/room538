@@ -1,4 +1,6 @@
 class RoomRequestsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :require_room_absence, only: [:create]
   before_action :set_request, only: [:accept, :destroy]
 
   def index
