@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:join]
   before_action :require_room_presence, only: [:edit, :update, :destroy]
   before_action :require_room_absence, only: [:new, :create]
   before_action :set_room, only: [:edit, :update, :destroy]
@@ -35,6 +35,20 @@ class RoomsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def join
+    unless user_signed_in?
+      return redirect_to new_user_registration_path,
+                         notice: 'You need to sign in or sign up and after that follow the link again.'
+    end
+    if current_user.room?
+      return redirect_to edit_room_path,
+                         notice: 'To join another room you need to leave your current. You can do this in danger zone.'
+    end
+    room = Room.all.select { |room_s| room_s.invite_token == params[:token] }.first
+    current_user.join_room(room)
+    redirect_to dashboard_path, notice: "Welcome to room \"#{room.name}\"!"
   end
 
   def leave

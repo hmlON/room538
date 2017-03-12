@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post 'dashboard/do' => 'dashboard#do_action', as: 'do_action'
   post 'dashboard/punish' => 'dashboard#punish', as: 'punish'
   root 'pages#index'
+  get 'join' => 'rooms#join', as: 'join_room'
   patch 'room/leave' => 'rooms#leave', as: 'leave_room'
   patch 'room/reset-progress' => 'rooms#reset_progress', as: 'reset_room_progress'
   post 'room_requests/accept/:id' => 'room_requests#accept', as: 'accept_room_request'

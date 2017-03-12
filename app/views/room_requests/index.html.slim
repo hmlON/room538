@@ -1,6 +1,9 @@
 = title 'Room Requests'
 
 - if current_user.room?
+
+  p.invite-url.text-center = "Invite url: #{current_user.room.invite_url}"
+
   h3.text-center Requests to join your room
   table.table
     tr

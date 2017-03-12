@@ -29,6 +29,7 @@ Style/BlockDelimiters:
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/*.rb'
+    - 'app/controllers/rooms_controller.rb'
 
 Metrics/BlockLength:
   Exclude:
