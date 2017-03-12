@@ -12,7 +12,10 @@ class Room < ApplicationRecord
   has_many :activities, as: :trackable, class_name: 'PublicActivity::Activity', dependent: :destroy
 
   def invite_url
-    token = Digest::SHA1.hexdigest(id.to_s)[0, 8]
-    Rails.application.routes.url_helpers.join_room_url(token: token, host: 'room538.herokuapp.com')
+    Rails.application.routes.url_helpers.join_room_url(token: invite_token, host: 'room538.herokuapp.com')
+  end
+
+  def invite_token
+    Digest::SHA1.hexdigest(id.to_s)[0, 8]
   end
 end
