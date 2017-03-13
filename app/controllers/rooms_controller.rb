@@ -5,7 +5,7 @@ class RoomsController < ApplicationController
   before_action :set_room, only: [:edit, :update, :destroy]
 
   def index
-    @rooms = Room.includes(:users).all
+    @rooms = Room.includes(:users).all.order(:id)
   end
 
   def new
