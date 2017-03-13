@@ -17,7 +17,7 @@ header
         - if current_user.room?
           = link_to 'Room settings', edit_room_path, class: 'dropdown-item'
         = link_to room_requests_path, class: 'dropdown-item' do
-          | Requests to join room 
+          | Invites
           - if current_user.room?
             - unless current_user.room.room_requests.count.zero?
               span.badge.badge-info = current_user.room.room_requests.count
