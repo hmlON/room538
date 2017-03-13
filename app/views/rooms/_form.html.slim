@@ -12,7 +12,7 @@
             - unless action.creator.nil?
               = link_to '&times;'.html_safe, action_path(id: action.id), method: :delete
   .text-center
-    button.btn.btn-secondary data-target="#createActionModal" data-toggle="modal" type="button" Create new action
+    button.create-new-action.btn.btn-secondary data-target="#createActionModal" data-toggle="modal" type="button" Create new action
   .actions.text-center
     = f.button :submit, submit_button_text, class: 'btn btn-primary'
 
