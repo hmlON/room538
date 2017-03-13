@@ -9,6 +9,9 @@ UncommunicativeModuleName:
   exclude:
   - Room538
 
+LongParameterList:
+  max_params: 4
+
 DuplicateMethodCall:
   max_calls: 2
 

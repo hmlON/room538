@@ -1,8 +1,8 @@
 module DashboardHelper
-  def progress_tag(current:, min: 0, max: 100)
+  def progress_tag(current:, min: 0, max: 100, text: '')
     width_persentage = current.zero? ? 0 : (current - min) * 100 / (max - min)
     content_tag(:div,
-                content_tag(:div, '',
+                content_tag(:div, text,
                             class: 'progress-bar',
                             'aria-valuemax' => max,
                             'aria-valuemin' => min,

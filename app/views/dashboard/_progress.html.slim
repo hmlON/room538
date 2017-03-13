@@ -6,4 +6,5 @@
       tr
         td.w-25 = user_action.user.name
         td.w-75
-          = progress_tag(current: user_action.value, min: room_action.min_value - 1, max: room_action.max_value)
+          = progress_tag(current: user_action.value, min: room_action.min_value - 1, max: room_action.max_value,
+                         text: user_action.value)
