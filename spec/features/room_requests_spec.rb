@@ -16,7 +16,7 @@ RSpec.feature 'Room requests' do
     expect(page).to have_content 'Request successfully sent'
 
     sign_in room_user
-    click_link 'Requests to join room'
+    click_link 'Invites'
     click_button 'Accept'
 
     expect(page).to have_content "#{user.name} successfully joined your room"
