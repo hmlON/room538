@@ -1,7 +1,7 @@
 = simple_form_for(room, url: rooms_path) do |f|
   = f.input :name, placeholder: 'Name', label: false
   .form-group.check_boxes.required.room_actions
-    label.controll-label Actions:
+    label.controll-label What you are doing with your roommates (actions):
     = hidden_field(:room, :action_ids, multiple: true)
     .row
       - @actions.each do |action|
