@@ -20,17 +20,18 @@
           td = "#{time_ago_in_words request.created_at} ago"
           td = button_to 'Accept', accept_room_request_path(id: request.id), method: :post, class: 'btn btn-success'
           td = button_to 'Decline', room_request_path(id: request.id), method: :delete, class: 'btn btn-danger'
-  
-h3.text-center Sent requests
-table.table
-  tr
-    th #
-    th Room
-    th Sent
-    th Delete
-  - @sent_requests.each.with_index(1) do |request, i|
+
+- else
+  h3.text-center Sent requests
+  table.table
     tr
-      td = i
-      td = request.room.name
-      td = "#{time_ago_in_words request.created_at} ago"
-      td = button_to 'Delete', room_request_path(id: request.id), method: :delete, class: 'btn btn-danger'
+      th #
+      th Room
+      th Sent
+      th Delete
+    - @sent_requests.each.with_index(1) do |request, i|
+      tr
+        td = i
+        td = request.room.name
+        td = "#{time_ago_in_words request.created_at} ago"
+        td = button_to 'Delete', room_request_path(id: request.id), method: :delete, class: 'btn btn-danger'
