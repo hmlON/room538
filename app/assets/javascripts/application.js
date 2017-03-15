@@ -16,3 +16,7 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+  $(".alert").fadeIn(0).delay(4000).fadeOut(500);
+});
