@@ -2,7 +2,7 @@
 # Room538
 A hostel room control application. It is destined for controlling who is next on things like "cleaning up", "taking out trash" or other actions between you and your roommates.
 
-Deployed to Heroku: room538.herokuapp.com
+Deployed to Heroku: https://room538.herokuapp.com/
 
 ### Technologies:
 - Language: Ruby
