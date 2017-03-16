@@ -1,6 +1,6 @@
 module DashboardHelper
   def progress_tag(current:, min: 0, max: 100, text: '')
-    min, current, max = [min, current, max].map { |arg| arg + min * -1 } if min.negative?
+    min, current, max = [min, current, max].map { |arg| arg + (min * -1) - 1 } if min.negative?
     width_persentage = current.zero? ? 0 : (current - min) * 100 / (max - min)
     content_tag(:div,
                 content_tag(:div, text,
