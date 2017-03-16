@@ -3,6 +3,14 @@
   display: flex
   justify-content: center
 
+
+.dashboard-user-card
+  @extend .text-center
+  margin: 5px
+
+.card-current_user
+  @include card-variant(darken($brand-info, 15%), darken($brand-info, 15%))
+
 .dashbooard-user-photo
   height: 48px
   margin: 5px

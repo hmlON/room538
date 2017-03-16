@@ -1,7 +1,7 @@
 ul.user-cards.row
   - @room.users.each do |user|
     .col-lg-3.col-md-4.col-sm-6
-      .card.text-center.m-1 class="#{user == current_user ? "card-primary" : 'card-info'}"
+      .card.dashboard-user-card class="#{user == current_user ? "card-current_user" : 'card-info'}"
         .card-block.card-inverse
           .card-img-top
             = user_photo(user, photo_class: 'dashbooard-user-photo', icon_size: '3x')
