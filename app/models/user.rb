@@ -35,12 +35,12 @@ class User < ApplicationRecord
     if where(email: auth.info.email).exists?
       user = find_by(email: auth.info.email)
       user.update(provider: auth.provider, uid: auth.uid, photo_url: auth.info.image)
+      user.remember_me!
       return user
     end
 
-    create(email: auth.info.email,
+    create(email: auth.info.email, name: auth.info.name,
            password: Devise.friendly_token[0, 20],
-           name: auth.info.name,
            provider: auth.provider, uid: auth.uid,
            photo_url: auth.info.image)
   end
