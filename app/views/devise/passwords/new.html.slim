@@ -1,7 +1,12 @@
+= title 'Forgot your password?'
+
+.no-header-fix
 h2.text-center Forgot your password?
+
 = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
   = devise_error_messages!
-  = f.input :email, autofocus: true
-  = f.button :submit, "Send me reset password instructions"
+  = f.input :email, autofocus: true, label: false, placeholder: 'Email'
+  .actions.text-center
+    = f.button :submit, "Send me reset password instructions", class: 'btn btn-primary'
 
 = render "devise/shared/links"
