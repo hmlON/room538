@@ -1,17 +1,27 @@
 Rails.application.routes.draw do
-  get 'dashboard' => 'dashboard#index'
-  post 'dashboard/do' => 'dashboard#do_action', as: 'do_action'
-  post 'dashboard/punish' => 'dashboard#punish', as: 'punish'
   root 'pages#index'
-  get 'join' => 'rooms#join', as: 'join_room'
-  patch 'room/leave' => 'rooms#leave', as: 'leave_room'
-  patch 'room/reset-progress' => 'rooms#reset_progress', as: 'reset_room_progress'
-  post 'room_requests/accept/:id' => 'room_requests#accept', as: 'accept_room_request'
-  resources :room_requests, only: [:index, :create, :destroy]
-  resources :rooms, only: [:index, :new, :create]
-  resources :actions, only: [:new, :create, :destroy]
-  get '/rooms/edit' => 'rooms#edit', as: 'edit_room'
-  patch '/rooms' => 'rooms#update'
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   get 'about' => 'pages#about'
+
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+  resources :rooms, only: [:index, :new, :create]
+  scope 'rooms', controller: :rooms do
+    get 'edit', as: 'edit_room'
+    patch '/', action: :update
+    get 'join', as: 'join_room'
+    patch 'reset-progress', as: 'reset_room_progress'
+    patch 'leave', as: 'leave_room'
+  end
+
+  scope 'dashboard', controller: :dashboard do
+    get '/', action: :index, as: 'dashboard'
+    post 'do', action: :do_action, as: 'do_action'
+    post 'punish', as: 'punish'
+  end
+
+  resources :room_requests, only: [:index, :create, :destroy] do
+    post 'accept', on: :member
+  end
+
+  resources :actions, only: [:create, :destroy]
 end
