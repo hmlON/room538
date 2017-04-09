@@ -4,19 +4,21 @@ class ActionsController < ApplicationController
   def create
     @action = Action.new(action_params)
     if @action.save
-      redirect_to :back, notice: "Action \"#{@action.name}\" has been successfully created"
+      flash[:notice] = "Action \"#{@action.name}\" has been successfully created"
     else
-      redirect_to :back, alert: 'There was an error creating this action!'
+      flash[:alert] = 'There was an error creating this action!'
     end
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
     action = Action.find(params[:id])
     if action.destroy
-      redirect_to :back, notice: "Action \"#{action.name}\" has been successfully deleted"
+      flash[:notice] = "Action \"#{action.name}\" has been successfully deleted"
     else
-      redirect_to :back, alert: 'There was an error deleting this action!'
+      flash[:alert] = 'There was an error deleting this action!'
     end
+    redirect_back(fallback_location: root_path)
   end
 
   private
