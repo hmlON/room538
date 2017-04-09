@@ -1,4 +1,4 @@
-= form_tag(do_action_path, method: :post, class: 'text-center') do
+= form_tag(submit_done_action_path, method: :post, class: 'text-center') do
   .form-group
     = collection_select :user_action, :id, 
                         current_user.user_actions, :id, :name,

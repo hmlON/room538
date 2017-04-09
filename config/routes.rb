@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   scope 'dashboard', controller: :dashboard do
     get '/', action: :index, as: 'dashboard'
-    post 'do', action: :do_action, as: 'do_action'
+    post 'submit-done-action'
     post 'punish', as: 'punish'
   end
 

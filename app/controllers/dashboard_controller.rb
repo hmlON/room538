@@ -7,7 +7,7 @@ class DashboardController < ApplicationController
     @activities = PublicActivity::Activity.order('created_at desc').where(owner_id: current_user.room.user_ids)
   end
 
-  def do_action
+  def submit_done_action
     action = current_user.user_actions.find_by(id: params[:user_action][:id])
 
     action.update(value: action.value + 1)
