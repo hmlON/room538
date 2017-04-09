@@ -4,6 +4,16 @@ A hostel room control application. It is destined for controlling who is next on
 
 Deployed to Heroku: https://room538.herokuapp.com/
 
+### Features
+- Authentication via registration or VK
+- Create rooms and invite your roommates in them
+- Create new actions and use them in your room
+- Simple dashboard with:
+  - Status: who is next on what actions
+  - Progress: progresses on every action of every roommate
+  - History: history of submitting done actions in your room
+- Ability to reset room progress, edit or leave room
+
 ### Technologies:
 - Language: Ruby
 - Framework: Rails
