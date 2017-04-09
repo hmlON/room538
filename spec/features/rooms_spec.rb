@@ -33,7 +33,7 @@ RSpec.feature 'Rooms' do
     click_link 'Room settings'
 
     fill_in 'Name', with: 'New room name'
-    # uncheck room.actions.first.name
+    uncheck room.actions.first.name
     check new_action.name
     click_button 'Update room'
 
