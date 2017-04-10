@@ -1,0 +1,16 @@
+{
+  "name": "Room538",
+  "short_name": "Room538",
+  "display": "standalone",
+  "start_url": "/",
+  "theme_color": "#3949AB",
+  "background_color": "#ffffff",
+  "description": "Hostel room control application.",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
