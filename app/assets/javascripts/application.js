@@ -20,3 +20,5 @@
 $(document).on('turbolinks:load', function() {
   $(".alert").fadeIn(0).delay(5000).fadeOut(500);
 });
+
+navigator.serviceWorker && navigator.serviceWorker.register('/service_worker.js')
