@@ -1,13 +1,6 @@
 module DashboardHelper
-  # :reek:FeatureEnvy
-  def progress_tag(current:, min: 0, max: 100, text: '')
-    width_persentage = current.zero? ? 0 : (current - min) * 100 / (max - min)
-    content_tag(:div,
-                content_tag(:div, text,
-                            class: current.negative? ? 'progress-bar bg-danger' : 'progress-bar',
-                            'aria-valuemax' => max, 'aria-valuemin' => min, 'aria-valuenow' => current,
-                            'role' => 'progressbar', 'style' => "width: #{width_persentage}%"),
-                class: 'progress')
+  def progress_tag(current:, **options)
+    ProgressBar.new(current: current, **options).html_tag
   end
 
   def activity_time_tag(time)
