@@ -1,23 +1,16 @@
 = title 'Room settings'
 
-ul.nav.nav-tabs.justify-content-center.m-3 role="tablist"
-  li.nav-item
-    a.nav-link.active data-toggle="tab" href="#edit-room" role="tab" Edit room
-  li.nav-item
-    a.nav-link data-toggle="tab" href="#danger-zone" role="tab" Danger zone
+hr
+#edit-room
+  h3.text-center Edit room
+  = render partial: 'form', locals: { room: @room, submit_button_text: 'Update room' }
 
-.tab-content
-  #edit-room.tab-pane.active role="tabpanel"
-    h3.text-center Edit room
-    = render partial: 'form', locals: { room: @room, submit_button_text: 'Update room' }
-
-  #danger-zone.tab-pane role="tabpanel"
-    .text-center
-      h3 Danger zone
-      div
-        button.btn.btn-danger.m-1 data-target="#resetProgressModal" data-toggle="modal" type="button" Reset room progress
-      div
-        button.btn.btn-danger.m-1 data-target="#leaveRoomModal" data-toggle="modal" type="button" Leave room
+hr
+#danger-zone
+  .text-center
+    h3 Danger zone
+    button.btn.btn-danger.m-1 data-target="#resetProgressModal" data-toggle="modal" type="button" Reset room progress
+    button.btn.btn-danger.m-1 data-target="#leaveRoomModal" data-toggle="modal" type="button" Leave room
 
 #leaveRoomModal.modal.fade aria-hidden="true" aria-labelledby="leaveRoomModalLabel" role="dialog" tabindex="-1"
   .modal-dialog role="document"
