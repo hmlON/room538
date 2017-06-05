@@ -12,6 +12,10 @@ Metrics/AbcSize:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Style/SymbolArray:
+  Exclude:
+    - 'config/routes.rb'
+
 Style/Documentation:
   Exclude:
     - 'spec/**/*'
@@ -20,15 +24,16 @@ Style/Documentation:
     - 'app/mailers/application_mailer.rb'
     - 'app/models/application_record.rb'
     - 'config/application.rb'
-    - 'db/migrate/*.rb'
 
 Style/BlockDelimiters:
   Exclude:
     - 'spec/**/*'
 
+Style/SymbolArray:
+  Enabled: false
+
 Metrics/MethodLength:
   Exclude:
-    - 'db/migrate/*.rb'
     - 'app/controllers/rooms_controller.rb'
 
 Metrics/BlockLength:
@@ -38,3 +43,8 @@ Metrics/BlockLength:
     - 'spec/**/*'
     - 'config/initializers/simple_form_bootstrap.rb'
     - 'config/environments/*'
+
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+    - 'db/migrate/*.rb'

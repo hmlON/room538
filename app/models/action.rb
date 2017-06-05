@@ -6,10 +6,10 @@ class Action < ApplicationRecord
 
   validates :name, presence: true
 
-  DEFAULT_ACTIONS = %w(
+  DEFAULT_ACTIONS = %w[
     taking out trash
     buying toilet paper
     cleaning room
     buying trash bags
-  ).freeze
+  ].freeze
 end
