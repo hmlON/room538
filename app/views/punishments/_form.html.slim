@@ -1,6 +1,6 @@
 = form_tag(punish_path, method: :post, class: 'form') do
   .form-group.check_boxes.required.punishment
-    label.controll-label Users:
+    label.controll-label Who do you want to punish? (removes 1 trash):
     = hidden_field(:punishment, :user_ids, multiple: true)
     .row
       - current_user.room.users.each do |user|

@@ -4,18 +4,12 @@ ul.nav.nav-tabs.justify-content-center.m-3 role="tablist"
   li.nav-item
     a.nav-link.active data-toggle="tab" href="#edit-room" role="tab" Edit room
   li.nav-item
-    a.nav-link data-toggle="tab" href="#punishments" role="tab" Punishments
-  li.nav-item
     a.nav-link data-toggle="tab" href="#danger-zone" role="tab" Danger zone
 
 .tab-content
   #edit-room.tab-pane.active role="tabpanel"
     h3.text-center Edit room
     = render partial: 'form', locals: { room: @room, submit_button_text: 'Update room' }
-
-  #punishments.tab-pane role="tabpanel"
-    h3.text-center Punishment (removes 1 trash)
-    = render 'punishments/form'
 
   #danger-zone.tab-pane role="tabpanel"
     .text-center
