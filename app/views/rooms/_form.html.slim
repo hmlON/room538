@@ -16,14 +16,4 @@
   .actions.text-center
     = f.button :submit, submit_button_text, class: 'btn btn-primary'
 
-#createActionModal.modal.fade aria-hidden="true" aria-labelledby="createActionModalLabel" role="dialog" tabindex="-1"
-  .modal-dialog role="document"
-    .modal-content
-      .modal-header
-        h5#createActionModalLabel.modal-title Create new action
-        button.close aria-label="Close" data-dismiss="modal" type="button"
-          span aria-hidden="true" &times;
-      .modal-body
-        = render "actions/form"
-      .modal-footer
-        button.btn.btn-secondary data-dismiss="modal" type="button" Close
+= render "actions/form_modal"
