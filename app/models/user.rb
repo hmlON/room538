@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, omniauth_providers: [:vkontakte]
+         :omniauthable, omniauth_providers: [:google_oauth2, :vkontakte]
 
   validates :name, presence: true
 

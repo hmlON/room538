@@ -9,6 +9,10 @@ UncommunicativeModuleName:
   exclude:
   - Room538
 
+UncommunicativeMethodName:
+  accept:
+    - google_oauth2
+
 LongParameterList:
   max_params: 4
 

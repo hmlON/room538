@@ -4,6 +4,7 @@
 h2.text-center Sign in
 
 .omniauth-links
+  = link_to "Sign in with #{fa_icon('google')}".html_safe, user_google_oauth2_omniauth_authorize_path, class: 'omniauth-link'
   = link_to "Sign in with #{fa_icon('vk')}".html_safe, user_vkontakte_omniauth_authorize_path, class: 'omniauth-link'
 
 = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
