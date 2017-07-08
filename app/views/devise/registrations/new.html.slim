@@ -4,8 +4,10 @@
 h2.text-center Sign up
 
 .omniauth-links
-= link_to "Sign up with #{fa_icon('google')}".html_safe, user_google_oauth2_omniauth_authorize_path, class: 'omniauth-link'
-  = link_to "Sign up with #{fa_icon('vk')}".html_safe, user_vkontakte_omniauth_authorize_path, class: 'omniauth-link'
+  = link_to user_google_oauth2_omniauth_authorize_path, class: 'omniauth-link' do
+    = "Sign up with #{fa_icon('google')}".html_safe
+  = link_to user_vkontakte_omniauth_authorize_path, class: 'omniauth-link' do
+    = "Sign up with #{fa_icon('vk')}".html_safe
 
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), defaults: { required: true, label: false }) do |f|
   / = devise_error_messages!
