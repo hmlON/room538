@@ -1,6 +1,7 @@
 # User is a preson, who lives in a hostel room
 class User < ApplicationRecord
   belongs_to :room, optional: true
+  has_many :activities
   has_many :user_actions
   has_many :sent_room_requests, class_name: 'RoomRequest', foreign_key: 'sender_id'
   has_many :created_actions, class_name: 'Action', foreign_key: 'creator_id'
