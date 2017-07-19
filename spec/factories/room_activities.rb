@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :room_activity do
-    name 'MyString'
-    room nil
+    sequence(:name) { |n| Faker::Hacker.ingverb + n.to_s }
+    room
   end
 end
