@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170310222020) do
+ActiveRecord::Schema.define(version: 20170719174950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,11 +38,29 @@ ActiveRecord::Schema.define(version: 20170310222020) do
     t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
   end
 
+  create_table "invites", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "room_id"
+    t.string   "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_invites_on_room_id", using: :btree
+    t.index ["user_id"], name: "index_invites_on_user_id", using: :btree
+  end
+
   create_table "room_actions", force: :cascade do |t|
     t.integer "room_id"
     t.integer "action_id"
     t.index ["action_id"], name: "index_room_actions_on_action_id", using: :btree
     t.index ["room_id"], name: "index_room_actions_on_room_id", using: :btree
+  end
+
+  create_table "room_activities", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_room_activities_on_room_id", using: :btree
   end
 
   create_table "room_requests", force: :cascade do |t|
@@ -92,8 +110,11 @@ ActiveRecord::Schema.define(version: 20170310222020) do
     t.index ["room_id"], name: "index_users_on_room_id", using: :btree
   end
 
+  add_foreign_key "invites", "rooms"
+  add_foreign_key "invites", "users"
   add_foreign_key "room_actions", "actions"
   add_foreign_key "room_actions", "rooms"
+  add_foreign_key "room_activities", "rooms"
   add_foreign_key "room_requests", "rooms"
   add_foreign_key "user_actions", "room_actions"
   add_foreign_key "user_actions", "users"
