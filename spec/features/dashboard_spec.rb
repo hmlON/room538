@@ -1,6 +1,6 @@
 RSpec.feature 'Dashboard' do
   let(:user) { create(:user) }
-  let(:room) { create(:room, :with_set_up) }
+  let(:room) { create(:room, :with_old_setup) }
 
   background do
     user.join_room(room)

@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :room do
     name { Faker::Hipster.word }
 
-    trait :with_set_up do
+    trait :with_old_setup do
       after :build do |room|
         room.actions << create_list(:action, 3)
         create(:user).join_room(room)
