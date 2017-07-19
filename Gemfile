@@ -16,7 +16,6 @@ gem 'jquery-rails'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-vkontakte'
 gem 'pg', '~> 0.18'
-gem 'public_activity'
 gem 'puma', '~> 3.0'
 gem 'rails', '~> 5.0.1'
 gem 'rainbow', '>= 2.1.0', '< 2.2.0' # workaround for bundler errors

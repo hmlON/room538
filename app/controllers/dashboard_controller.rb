@@ -4,7 +4,8 @@ class DashboardController < ApplicationController
 
   def index
     @room = Room.includes(:users, room_actions: :user_actions).where(id: current_user.room_id).first
-    @activities = PublicActivity::Activity.order('created_at desc').where(owner_id: current_user.room.user_ids)
+    # TODO: get array of activities
+    @activities = []
   end
 
   def submit_done_action
@@ -12,7 +13,7 @@ class DashboardController < ApplicationController
 
     action.update(value: action.value + 1)
 
-    action.create_activity :done, owner: current_user
+    # TODO: create activity
     redirect_to dashboard_path, notice: "Good job, #{current_user.name}, for \"#{action.name}\"!"
   end
 
@@ -24,7 +25,7 @@ class DashboardController < ApplicationController
     users.each do |user|
       user_action = user.user_actions.find_by(room_action_id: room_action.id)
       user_action.update(value: user_action.value - 1)
-      user_action.create_activity :punished, owner: current_user
+      #  create_punishment
     end
 
     redirect_to dashboard_path, notice: 'Roommates are successfully punished.'

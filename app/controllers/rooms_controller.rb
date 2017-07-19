@@ -64,8 +64,6 @@ class RoomsController < ApplicationController
       user_action.update(value: 0)
     end
 
-    room.create_activity :resetted, owner: current_user
-
     redirect_to dashboard_path, notice: 'Resetted room progress successfully.'
   end
 

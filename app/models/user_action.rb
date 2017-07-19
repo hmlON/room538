@@ -6,7 +6,4 @@ class UserAction < ApplicationRecord
 
   default_scope { includes(:room_action).order(:id) }
   delegate :name, to: :room_action
-
-  include PublicActivity::Common
-  has_many :activities, as: :trackable, class_name: 'PublicActivity::Activity', dependent: :destroy
 end
