@@ -8,11 +8,17 @@ class User < ApplicationRecord
 
   default_scope { order(:id) }
 
+  delegate :room_activities, to: :room
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2, :vkontakte]
 
   validates :name, presence: true
+
+  def next_on_room_activities
+    room_activities.select { |room_activity| room_activity.next_on_user == self }
+  end
 
   def join_room(room)
     room.users << self

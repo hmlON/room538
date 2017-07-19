@@ -3,6 +3,8 @@ Rails:
 
 Metrics/LineLength:
   Max: 120
+  Exclude:
+    - 'spec/**/*'
 
 Metrics/AbcSize:
   Max: 20
