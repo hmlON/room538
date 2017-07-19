@@ -2,9 +2,11 @@ FactoryGirl.define do
   factory :room do
     name { Faker::Hipster.word }
 
-    after :build do |room|
-      room.actions << create_list(:action, 3)
-      create(:user).join_room(room)
+    trait :with_set_up do
+      after :build do |room|
+        room.actions << create_list(:action, 3)
+        create(:user).join_room(room)
+      end
     end
 
     factory :room_with_users do

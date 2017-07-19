@@ -1,6 +1,6 @@
 RSpec.feature 'Rooms' do
   let(:user) { create(:user) }
-  let(:room) { create(:room) }
+  let(:room) { create(:room, :with_set_up) }
 
   background do
     sign_in user
