@@ -1,15 +1,14 @@
 RSpec.feature 'Room requests' do
   let(:user) { create(:user) }
-  let(:room) { create(:room, :with_old_setup) }
+  let!(:room) { create(:room) }
+  let(:room_user) { create(:user, room: room) }
 
   background do
     sign_in user
+    visit rooms_path
   end
 
   scenario 'User joins room' do
-    room_user = room.users.first
-
-    visit rooms_path
     within "#room-#{room.id}" do
       click_on 'Send request to join'
     end
