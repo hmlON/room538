@@ -60,22 +60,30 @@ RSpec.feature 'Rooms' do
     # end
   end
 
-  # scenario 'User leaves room' do
-  #     user = room.users.first
-  #     sign_in user
-  #     visit dashboard_path
-  #     click_link 'Room settings'
-  #
-  #     click_button 'Leave room'
-  #     within '#leaveRoomModal' do
-  #       click_on 'Leave room'
-  #     end
-  #
-  #     user.reload
-  #     expect(user.room).to be_nil
-  #     expect(Room.where(id: room.id)).to be_empty
-  #   end
-  #
+  context 'leaving' do
+    let(:room) { create :room }
+    let(:user) { create :user }
+
+    background do
+      room.users << user
+
+      sign_in user
+      visit dashboard_path
+      click_link 'Room settings'
+    end
+
+    scenario 'User leaves room' do
+      click_button 'Leave room'
+      within '#leaveRoomModal' do
+        click_on 'Leave room'
+      end
+
+      user.reload
+      expect(user.room).to be_nil
+      expect(Room.where(id: room.id)).to be_empty
+    end
+  end
+
   #   scenario 'User looks at all rooms' do
   #     rooms = create_list(:room, 3)
   #
