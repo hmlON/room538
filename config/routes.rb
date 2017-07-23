@@ -13,7 +13,6 @@ Rails.application.routes.draw do
 
   scope 'dashboard', controller: :dashboard do
     get '/', action: :index, as: 'dashboard'
-    post 'submit-done-action'
     post 'punish', as: 'punish' # TODO: switch to punishments#create
   end
 
@@ -22,6 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :room_activities, only: [:new, :update, :create, :destroy]
+  resources :activities, only: [:create, :destroy]
 
   resources :punishments, only: [:index]
 end

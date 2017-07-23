@@ -11,10 +11,8 @@ ul.nav.nav-tabs.justify-content-center.m-3 role="tablist"
 .tab-content
   #status.tab-pane.active role="tabpanel"
     = render 'status'
-
-    .card.col-sm-4.offset-sm-4.text-center
-      .card-block
-        = render 'submit_done_action_form'
+    
+    = render 'submit_done_action_form'
           
   #progress.tab-pane role="tabpanel"
     = render 'progress'
