@@ -84,18 +84,26 @@ RSpec.feature 'Rooms' do
     end
   end
 
-  #   scenario 'User looks at all rooms' do
-  #     rooms = create_list(:room, 3)
-  #
-  #     within '.page-wrapper' do
-  #       click_link 'All rooms'
-  #     end
-  #
-  #     rooms.each do |room|
-  #       expect(page).to have_content room.name
-  #       room.users.each do |user|
-  #         expect(page).to have_content user.name
-  #       end
-  #     end
-  # end
+  context 'all' do
+    let(:user) { create :user }
+    let!(:rooms) { create_list(:room, 3, :with_activities) }
+
+    background do
+      sign_in user
+      visit root_path
+    end
+
+    scenario 'User looks at all rooms' do
+      within '.page-wrapper' do
+        click_link 'All rooms'
+      end
+
+      rooms.each do |room|
+        expect(page).to have_content room.name
+        room.users.each do |user|
+          expect(page).to have_content user.name
+        end
+      end
+    end
+  end
 end
