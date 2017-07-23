@@ -24,7 +24,7 @@ class RoomsController < ApplicationController
   end
 
   def edit
-    @room_activities = @room.room_activities.unscoped
+    @room_activities = @room.room_activities_with_disabled
   end
 
   def update

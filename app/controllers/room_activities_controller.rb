@@ -3,7 +3,7 @@ class RoomActivitiesController < ApplicationController
   before_action :require_room_presence
 
   def new
-    @room_activities = @room.room_activities.unscoped
+    @room_activities = @room.room_activities_with_disabled
   end
 
   def create
