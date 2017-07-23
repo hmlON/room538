@@ -1,10 +1,8 @@
-# A hostel room is a place where users who live in that room do actions like
+# A room is a place where users who live in that room do activities like
 # 'taking out trash' with their roommates
 class Room < ApplicationRecord
   has_many :users
   has_many :room_activities, dependent: :destroy
-  has_many :room_actions, dependent: :destroy
-  has_many :actions, through: :room_actions
   has_many :room_requests, dependent: :destroy
 
   validates :name, presence: true
@@ -17,6 +15,10 @@ class Room < ApplicationRecord
     RoomActivity::DEFAULT_ROOM_ACTIVITIES.map do |activity_name|
       room_activities.create(name: activity_name)
     end
+  end
+
+  def self.with_invite_token(token)
+    all.find { |room_s| room_s.invite_token == token }
   end
 
   def invite_url

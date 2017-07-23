@@ -1,5 +1,5 @@
-# User activities are actions that count of how many times user has done
-# some activity
+# User activity is counter of how many times user has done
+# certain activity
 class UserActivity
   attr_reader :user, :room_activity
 

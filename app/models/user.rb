@@ -2,9 +2,7 @@
 class User < ApplicationRecord
   belongs_to :room, optional: true
   has_many :activities
-  has_many :user_actions
   has_many :sent_room_requests, class_name: 'RoomRequest', foreign_key: 'sender_id'
-  has_many :created_actions, class_name: 'Action', foreign_key: 'creator_id'
 
   default_scope { order(:id) }
 
@@ -20,16 +18,8 @@ class User < ApplicationRecord
     room_activities.select { |room_activity| room_activity.next_on_user == self }
   end
 
-  def join_room(room)
-    room.users << self
-    room.room_actions.each do |room_action|
-      user_actions.create(room_action: room_action)
-    end
-    sent_room_requests.destroy_all
-  end
-
   def leave_room
-    user_actions.destroy_all
+    activities.destroy_all
     update(room: nil)
   end
 

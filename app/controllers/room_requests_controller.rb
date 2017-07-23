@@ -9,9 +9,8 @@ class RoomRequestsController < ApplicationController
   end
 
   def accept
-    sender = User.find(@request.sender_id)
-    sender.join_room(current_user.room)
-    redirect_to dashboard_path, notice: "#{sender.name} successfully joined your room."
+    current_user.room.users << @request.sender
+    redirect_to dashboard_path, notice: "#{@request.sender.name} successfully joined your room."
   end
 
   def create

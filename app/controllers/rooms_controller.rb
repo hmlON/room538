@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!, except: [:join]
-  before_action :require_room_presence, only: [:edit, :update, :destroy]
+  before_action :require_room_presence, only: [:edit, :update, :destroy, :leave, :reset_progress]
   before_action :require_room_absence, only: [:new, :create]
 
   def index
@@ -24,13 +24,11 @@ class RoomsController < ApplicationController
   end
 
   def edit
-    # ids = current_user.room.user_ids
-    # ids << nil # add default actions
-    @room_activities = @room.room_activities.unscoped # Action.where(creator_id: ids)
+    @room_activities = @room.room_activities.unscoped
   end
 
   def update
-    if @room.update(room_params) # RoomUpdater.new(@room, room_params).update
+    if @room.update(room_params)
       redirect_to dashboard_path, notice: 'You have successfully updated your room.'
     else
       render :edit
@@ -46,8 +44,8 @@ class RoomsController < ApplicationController
       return redirect_to edit_room_path,
                          notice: 'To join another room you need to leave your current. You can do this in danger zone.'
     end
-    room = Room.all.select { |room_s| room_s.invite_token == params[:token] }.first
-    current_user.join_room(room)
+    room = Room.with_invite_token(params[:token])
+    room.users << current_user
     redirect_to dashboard_path, notice: "Welcome to room \"#{room.name}\"!"
   end
 
@@ -59,10 +57,7 @@ class RoomsController < ApplicationController
   end
 
   def reset_progress
-    room = current_user.room
-    room.room_actions.flat_map(&:user_actions).each do |user_action|
-      user_action.update(value: 0)
-    end
+    @room.activities.destroy_all
 
     redirect_to dashboard_path, notice: 'Resetted room progress successfully.'
   end
