@@ -4,6 +4,12 @@ hr
 #edit-room
   h3.text-center Edit room
   = render partial: 'form', locals: { room: @room, submit_button_text: 'Update room' }
+  hr
+  h3.text-center Edit your activities
+  = render 'room_activities/edit_form'
+  hr
+  h3.text-center Create new activity
+  = render 'room_activities/form'
 
 hr
 #danger-zone

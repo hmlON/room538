@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     post 'accept', on: :member
   end
 
-  resources :room_activities, only: [:new, :create, :destroy]
+  resources :room_activities, only: [:new, :update, :create, :destroy]
 
   resources :punishments, only: [:index]
 end

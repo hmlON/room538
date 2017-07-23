@@ -1,0 +1,12 @@
+= title 'Step 2: Add activities to your room'
+h3.text-center We created some activities for you
+p.text-center.text-muted You can delete them, if you don't like them
+= render 'edit_form'
+
+h3.text-center Or you can create your own activities
+= render 'form'
+
+.pull-right
+	= link_to dashboard_path, class: 'btn btn-primary' do
+		| Continue to Dashboard 
+		= fa_icon('arrow-right')

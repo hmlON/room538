@@ -13,6 +13,9 @@ class RoomActivity < ApplicationRecord
 
   validates :name, presence: true
 
+  scope :enabled, -> { where(enabled: true) }
+  default_scope { enabled }
+
   delegate :users, to: :room
 
   def user_activities
@@ -30,5 +33,9 @@ class RoomActivity < ApplicationRecord
   def next_on_user
     user_activities.find { |user_activity| user_activity.value == min_value }
                    .user
+  end
+
+  def enabled?
+    enabled
   end
 end

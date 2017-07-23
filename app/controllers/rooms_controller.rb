@@ -2,7 +2,6 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!, except: [:join]
   before_action :require_room_presence, only: [:edit, :update, :destroy]
   before_action :require_room_absence, only: [:new, :create]
-  before_action :set_room, only: [:edit, :update, :destroy]
 
   def index
     @rooms = Room.includes(:users).all.order(:id)
@@ -25,13 +24,13 @@ class RoomsController < ApplicationController
   end
 
   def edit
-    ids = current_user.room.user_ids
-    ids << nil # add default actions
-    @actions = Action.where(creator_id: ids)
+    # ids = current_user.room.user_ids
+    # ids << nil # add default actions
+    @room_activities = @room.room_activities.unscoped # Action.where(creator_id: ids)
   end
 
   def update
-    if RoomUpdater.new(@room, room_params).update
+    if @room.update(room_params) # RoomUpdater.new(@room, room_params).update
       redirect_to dashboard_path, notice: 'You have successfully updated your room.'
     else
       render :edit
@@ -70,11 +69,7 @@ class RoomsController < ApplicationController
 
   private
 
-  def set_room
-    @room = current_user.room
-  end
-
   def room_params
-    params.require(:room).permit(:name, action_ids: [])
+    params.require(:room).permit(:name)
   end
 end

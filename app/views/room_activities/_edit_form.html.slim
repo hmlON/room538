@@ -1,0 +1,8 @@
+.form.row
+  - @room_activities.each do |activity|
+    .checkbox.col-sm-6
+      label for="#{dom_id(activity)}"
+        = check_box_tag 'activity_ids[]', activity.id, activity.enabled?, id: dom_id(activity), class: "js-update-room-activity", data: { id: activity.id }
+        = activity.name
+      / - unless activity.creator.nil?
+      / = link_to '&times;'.html_safe, room_activity_path(id: activity.id), method: :delete
