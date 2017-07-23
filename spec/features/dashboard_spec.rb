@@ -16,7 +16,7 @@ RSpec.feature 'Dashboard' do
     }.to change { Activity.count }.by(1)
 
     expect(page).to have_content 'Good job'
-    expect(user.next_on_room_activities.pluck(:name)).not_to include(room_activity_name)
+    expect(user.reload.next_on_room_activities.pluck(:name)).not_to include(room_activity_name)
 
     # TODO: turn on this test, it is temporary disabled
     # click_on 'History'

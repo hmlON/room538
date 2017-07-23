@@ -13,6 +13,6 @@ class UserActivity
   end
 
   def value
-    activities.count
+    @value ||= activities.count
   end
 end
