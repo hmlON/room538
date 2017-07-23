@@ -20,14 +20,17 @@
 $(document).on('turbolinks:load', function() {
   $(".alert").fadeIn(0).delay(5000).fadeOut(500);
 	$(".js-update-room-activity").click(function (e) {
-		console.log(this);
 		$.ajax({
 		  method: "PATCH",
 		  url: "/room_activities/" + $(this).data("id"),
 		  data: { room_activity: { enabled: this.checked } }
 		})
 		  .done(function( msg ) {
+		    console.log( msg );
 		    alert( "Updated");
+		  })
+		  .fail(function( msg ) {
+		    console.log( msg );
 		  });
 	});
 });

@@ -18,9 +18,12 @@ class RoomActivitiesController < ApplicationController
   end
 
   def update
-    room_activity = RoomActivity.find(params[:id])
-    room_activity.update(room_activity_params)
-    # respond
+    room_activity = RoomActivity.unscoped.find(params[:id])
+    if room_activity.update(room_activity_params)
+      render json: { ok: true }
+    else
+      render json: room_activity.errors
+    end
   end
 
   def destroy
@@ -43,6 +46,5 @@ class RoomActivitiesController < ApplicationController
     params.require(:room_activity)
           .permit(:name, :enabled)
           .merge(room_id: @room.id)
-    # .tap { |params| params[:creator_id] = current_user.id }
   end
 end
