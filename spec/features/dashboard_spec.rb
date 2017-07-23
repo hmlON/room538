@@ -18,10 +18,9 @@ RSpec.feature 'Dashboard' do
     expect(page).to have_content 'Good job'
     expect(user.reload.next_on_room_activities.pluck(:name)).not_to include(room_activity_name)
 
-    # TODO: turn on this test, it is temporary disabled
-    # click_on 'History'
-    # within '#history' do
-    #   expect(page).to have_content "#{user.name} has done \"#{room_action.name}\""
-    # end
+    click_on 'History'
+    within '#history' do
+      expect(page).to have_content "#{user.name} has done \"#{room_activity.name}\""
+    end
   end
 end

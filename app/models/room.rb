@@ -9,6 +9,10 @@ class Room < ApplicationRecord
 
   validates :name, presence: true
 
+  def activities
+    Activity.where(room_activity_id: room_activity_ids)
+  end
+
   def create_default_room_activities
     RoomActivity::DEFAULT_ROOM_ACTIVITIES.map do |activity_name|
       room_activities.create(name: activity_name)

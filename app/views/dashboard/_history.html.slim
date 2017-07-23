@@ -1,5 +1,10 @@
-/ .history-wrapper
-/   - if @activities.empty?
-/     .no-activities There is nothing done yet. Try sumbitting done action.
-/   - @activities.each do |activity|
-/     = render_activity activity
+.history-wrapper
+  - if @activities.empty?
+    .no-activities There is nothing done yet. Try sumbitting done action.
+  - @activities.each do |activity|
+    .activity.card.card-inverse.card-info
+		  .card-block
+		    .card-text
+		      = "#{activity.user.name} has done "
+		      em = "\"#{activity.name}\" "
+		      = activity_time_tag(activity.created_at)

@@ -3,8 +3,7 @@ class DashboardController < ApplicationController
   before_action :require_room_presence
 
   def index
-    # TODO: get array of activities
-    # @activities = @room.activities
+    @activities = @room.activities.order(created_at: :desc)
   end
 
   def punish
