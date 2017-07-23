@@ -9,15 +9,16 @@ class RoomsController < ApplicationController
   end
 
   def new
-    @actions = Action.where(creator_id: [nil, current_user.id])
     @room = Room.new
   end
 
   def create
-    @room = current_user.build_room(room_params)
+    @room = Room.new(room_params)
+
     if @room.save
-      current_user.join_room(@room)
-      redirect_to dashboard_path, notice: "You have successfully created new room \"#{@room.name}\"."
+      @room.users << current_user
+      @room.create_default_room_activities
+      redirect_to new_room_activity_path, notice: "You have successfully created new room \"#{@room.name}\"."
     else
       redirect_to new_room_path, alert: 'There was an error creating the room!'
     end

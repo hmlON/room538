@@ -1,7 +1,17 @@
 # Room activities are activities that room uses
 class RoomActivity < ApplicationRecord
+  DEFAULT_ROOM_ACTIVITIES = [
+    'taking out trash',
+    'cleaning room',
+    'paying for internet',
+    'buying toilet paper',
+    'buying trash bags'
+  ].freeze
+
   belongs_to :room
   has_many :activities
+
+  validates :name, presence: true
 
   delegate :users, to: :room
 

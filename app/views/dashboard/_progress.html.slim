@@ -1,10 +1,10 @@
-- @room.room_actions.each do |room_action|
+- @room.room_activities.each do |room_activity|
   table.table
     thead
-      h5.text-center = "#{room_action.name.capitalize} progress"
-    - room_action.user_actions.each do |user_action|
+      h5.text-center = "#{room_activity.name.capitalize} progress"
+    - room_activity.user_activities.each do |user_activity|
       tr
-        td.w-25 = user_action.user.name
+        td.w-25 = user_activity.user.name
         td.w-75
-          = progress_tag(current: user_action.value, min: room_action.min_value - 1, max: room_action.max_value,
-                         text: user_action.value)
+          = progress_tag(current: user_activity.value, min: room_activity.min_value - 1, max: room_activity.max_value,
+                         text: user_activity.value)

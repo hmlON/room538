@@ -12,12 +12,12 @@ FactoryGirl.define do
       end
     end
 
-    trait :with_old_setup do
-      after :build do |room|
-        room.actions << create_list(:action, 3)
-        create(:user).join_room(room)
-      end
-    end
+    # trait :with_old_setup do
+    #   after :build do |room|
+    #     room.actions << create_list(:action, 3)
+    #     create(:user).join_room(room)
+    #   end
+    # end
 
     factory :room_with_users do
       after :build do |room|

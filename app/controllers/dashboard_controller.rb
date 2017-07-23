@@ -5,16 +5,7 @@ class DashboardController < ApplicationController
   def index
     @room = Room.includes(:users, room_actions: :user_actions).where(id: current_user.room_id).first
     # TODO: get array of activities
-    @activities = []
-  end
-
-  def submit_done_action
-    action = current_user.user_actions.find_by(id: params[:user_action][:id])
-
-    action.update(value: action.value + 1)
-
-    # TODO: create activity
-    redirect_to dashboard_path, notice: "Good job, #{current_user.name}, for \"#{action.name}\"!"
+    # @activities = @room.activities
   end
 
   def punish

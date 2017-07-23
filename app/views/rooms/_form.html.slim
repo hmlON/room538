@@ -1,19 +1,4 @@
 = simple_form_for(room, url: room_path) do |f|
   = f.input :name, placeholder: 'Name', label: false
-  .form-group.check_boxes.required.room_actions
-    label.controll-label What you are doing with your roommates (actions):
-    = hidden_field(:room, :action_ids, multiple: true)
-    .row
-      - @actions.each do |action|
-        .checkbox.col-sm-6
-          label for="#{dom_id(action)}"
-            = check_box_tag 'room[action_ids][]', action.id, room.action_ids.include?(action.id), id: dom_id(action)
-            = action.name
-            - unless action.creator.nil?
-              = link_to '&times;'.html_safe, action_path(id: action.id), method: :delete
-  .text-center
-    button.create-new-action.btn.btn-secondary data-target="#createActionModal" data-toggle="modal" type="button" Create new action
-  .actions.text-center
+  .activities.text-center
     = f.button :submit, submit_button_text, class: 'btn btn-primary'
-
-= render "actions/form_modal"

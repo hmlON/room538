@@ -9,6 +9,12 @@ class Room < ApplicationRecord
 
   validates :name, presence: true
 
+  def create_default_room_activities
+    RoomActivity::DEFAULT_ROOM_ACTIVITIES.map do |activity_name|
+      room_activities.create(name: activity_name)
+    end
+  end
+
   def invite_url
     Rails.application.routes.url_helpers.join_room_url(token: invite_token, host: 'room538.herokuapp.com')
   end
