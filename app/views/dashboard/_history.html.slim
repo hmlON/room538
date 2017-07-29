@@ -9,5 +9,6 @@
             = "#{activity.user.name} has done "
             em = "\"#{activity.name}\" "
             = activity_time_tag(activity.created_at)
-          .activity-undo
-            = button_to 'Undo', activity_path(id: activity.id), method: :delete, class: 'btn btn-warning btn-sm form-inline'
+          - if activity.user == current_user
+            .activity-undo
+              = button_to 'Undo', activity_path(id: activity.id), method: :delete, class: 'btn btn-warning btn-sm form-inline'
