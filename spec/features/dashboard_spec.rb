@@ -3,7 +3,7 @@ RSpec.feature 'Dashboard' do
   let(:user) { room.users.first }
   let!(:room_activity) { create :room_activity, room: room }
   let(:room_activity_name) { room_activity.name }
-  let(:undone_activity) { room.activities.last }
+  let(:undone_activity) { user.activities.last }
 
   background do
     sign_in user
