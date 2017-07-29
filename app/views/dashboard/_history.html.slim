@@ -2,9 +2,12 @@
   - if @activities.empty?
     .no-activities There is nothing done yet. Try sumbitting done activity.
   - @activities.each do |activity|
-    .activity.card.card-inverse.card-info
-		  .card-block
-		    .card-text
-		      = "#{activity.user.name} has done "
-		      em = "\"#{activity.name}\" "
-		      = activity_time_tag(activity.created_at)
+    .activity.card.card-inverse.card-info class="activity_#{activity.id}"
+      .card-block
+        .activity-card.card-text
+          .activity-text
+            = "#{activity.user.name} has done "
+            em = "\"#{activity.name}\" "
+            = activity_time_tag(activity.created_at)
+          .activity-undo
+            = button_to 'Undo', activity_path(id: activity.id), method: :delete, class: 'btn btn-warning btn-sm form-inline'

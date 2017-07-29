@@ -11,6 +11,15 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def destroy
+    activity = Activity.find(params[:id])
+    if activity.destroy
+      redirect_to dashboard_path, notice: "Undone #{activity.name} successfully"
+    else
+      redirect_to dashboard_path, alert: activity.errors.full_messages.join(', ')
+    end
+  end
+
   private
 
   def activity_params

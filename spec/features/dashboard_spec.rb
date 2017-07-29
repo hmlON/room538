@@ -3,6 +3,7 @@ RSpec.feature 'Dashboard' do
   let(:user) { room.users.first }
   let!(:room_activity) { create :room_activity, room: room }
   let(:room_activity_name) { room_activity.name }
+  let(:undone_activity) { room.activities.last }
 
   background do
     sign_in user
@@ -22,5 +23,15 @@ RSpec.feature 'Dashboard' do
     within '#history' do
       expect(page).to have_content "#{user.name} has done \"#{room_activity.name}\""
     end
+  end
+
+  scenario 'User undoes activity' do
+    click_on 'History'
+
+    expect {
+      within ".activity_#{undone_activity.id}" do
+        click_button 'Undo'
+      end
+    }.to change { Activity.count }.by(-1)
   end
 end
