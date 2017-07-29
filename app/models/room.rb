@@ -1,5 +1,15 @@
 # A room is a place where users who live in that room do activities like
 # 'taking out trash' with their roommates
+#
+# == Schema Information
+#
+# Table name: rooms
+#
+#  id               :integer   not null, primary key
+#  created_at       :datetime
+#  updated_at       :datetime
+#  name             :integer   not null
+#
 class Room < ApplicationRecord
   has_many :users
   has_many :room_activities, dependent: :destroy

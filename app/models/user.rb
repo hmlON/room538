@@ -1,4 +1,20 @@
 # User is a preson, who lives in a hostel room
+#
+# == Schema Information
+#
+# Table name: room_requests
+#
+#  id                   :integer    not null, primary key
+#  created_at           :datetime
+#  updated_at           :datetime
+#  name                 :string     DEFAULT(''), not null
+#  email                :string     DEFAULT(''), not null
+#  encrypted_password   :string     DEFAULT(''), not null
+#  room_id              :integer
+#  provider             :string
+#  uid                  :string
+#  photo_url            :string
+#
 class User < ApplicationRecord
   belongs_to :room, optional: true
   has_many :activities

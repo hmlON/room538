@@ -1,4 +1,16 @@
 # Room activities are activities that room uses
+#
+# == Schema Information
+#
+# Table name: room_activities
+#
+#  id               :integer   not null, primary key
+#  created_at       :datetime
+#  updated_at       :datetime
+#  name character   :string
+#  room_id          :integer
+#  enabled          :boolean   DEFAULT(true)
+#
 class RoomActivity < ApplicationRecord
   DEFAULT_ROOM_ACTIVITIES = [
     'taking out trash',
