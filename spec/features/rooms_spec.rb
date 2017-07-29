@@ -68,6 +68,13 @@ RSpec.feature 'Rooms' do
         expect(page).not_to have_content destroyed_room_activity.name
       end
     end
+
+    scenario 'User resetts rooms progress' do
+      click_on 'Reset room progress'
+      click_on 'Reset'
+
+      expect(room.activities.count).to eq 0
+    end
   end
 
   context 'leaving' do
