@@ -9,7 +9,7 @@ class RoomActivity < ApplicationRecord
   ].freeze
 
   belongs_to :room
-  has_many :activities
+  has_many :activities, dependent: :destroy
 
   validates :name, presence: true
 

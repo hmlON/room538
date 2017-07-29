@@ -34,8 +34,8 @@ RSpec.feature 'Rooms' do
     let(:room) { create :room, :with_activities }
     let(:user) { room.users.first }
     let(:new_room_name) { 'New room name' }
-    let(:room_activity_name) { room.room_activities.first.name }
-    let(:new_room_activity_name) { room.room_activities.first.name }
+    # let(:room_activity_name) { room.room_activities.first.name }
+    let(:destroyed_room_activity) { room.room_activities.last }
 
     background do
       sign_in user
@@ -58,6 +58,16 @@ RSpec.feature 'Rooms' do
     #   uncheck room_activity_name
     #   expect(room.room_activities.find_by(name: room_activity_name).enabled?).to eq false
     # end
+
+    scenario 'User destroys room activity' do
+      within ".room_activity_#{destroyed_room_activity.id}_field" do
+        click_on '×'
+      end
+
+      within '.edit_activities' do
+        expect(page).not_to have_content destroyed_room_activity.name
+      end
+    end
   end
 
   context 'leaving' do
