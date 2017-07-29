@@ -1,8 +1,8 @@
 # to call: ApplicationService.(params)
 #
 class ApplicationService
-  def self.call(*args, **kwargs)
-    service = new(*args, **kwargs)
+  def self.perform(args)
+    service = new(args)
     service.perform
     service
   end

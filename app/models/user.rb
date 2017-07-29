@@ -1,4 +1,4 @@
-# User is a preson, who lives in a hostel room
+# User is a preson, who lives in a room
 #
 # == Schema Information
 #
@@ -43,21 +43,7 @@ class User < ApplicationRecord
     room_id != nil
   end
 
-  # :reek:DuplicateMethodCall { allow_calls: ['auth.info', 'auth.provider', 'auth.uid'] }
-  def self.from_omniauth(auth)
-    if where(email: auth.info.email).exists?
-      user = find_by(email: auth.info.email)
-      user.update(provider: auth.provider, uid: auth.uid, photo_url: auth.info.image)
-      user.remember_me!
-      return user
-    end
-
-    create(email: auth.info.email, name: auth.info.name,
-           password: Devise.friendly_token[0, 20],
-           provider: auth.provider, uid: auth.uid,
-           photo_url: auth.info.image)
-  end
-
+  # method for omniauth
   def self.new_with_session(params, session)
     super.tap do |user|
       data = session['devise.vkontakte_data']
