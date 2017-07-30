@@ -15,7 +15,7 @@ class RoomsController < ApplicationController
     @room = Room.new(room_params)
 
     if @room.save
-      @room.users << current_user
+      current_user.join_room(@room)
       @room.create_default_room_activities
       redirect_to new_room_activity_path, notice: "You have successfully created new room \"#{@room.name}\"."
     else
@@ -45,7 +45,7 @@ class RoomsController < ApplicationController
                          notice: 'To join another room you need to leave your current. You can do this in danger zone.'
     end
     room = Room.with_invite_token(params[:token])
-    room.users << current_user
+    current_user.join_room(room)
     redirect_to dashboard_path, notice: "Welcome to room \"#{room.name}\"!"
   end
 

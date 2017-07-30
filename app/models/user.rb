@@ -34,6 +34,10 @@ class User < ApplicationRecord
     room_activities.select { |room_activity| room_activity.next_on_user == self }
   end
 
+  def join_room(room)
+    room.users << self
+  end
+
   def leave_room
     activities.destroy_all
     update(room: nil)
