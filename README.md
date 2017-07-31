@@ -5,8 +5,8 @@ A hostel room control application. It is destined for controlling who is next on
 Deployed to Heroku: https://room538.herokuapp.com/
 
 ### Features
-- Authentication via registration or VK
-- Create rooms and invite your roommates in them
+- Authentication via registration, VK or Google
+- Create rooms and invite your roommates to them
 - Create new activities and use them in your room
 - Simple dashboard with:
   - Status: who is next on what activities
