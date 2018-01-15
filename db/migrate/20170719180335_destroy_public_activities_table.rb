@@ -1,6 +1,6 @@
 class DestroyPublicActivitiesTable < ActiveRecord::Migration[5.0]
   def up
-    drop_table :activities
+    # drop_table :activities
   end
 
   def down
